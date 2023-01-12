@@ -1,0 +1,9 @@
+.product_listing{
+    background-color: rgb(250, 246, 246);
+    margin: 5px;
+}
+.product_listing:hover{
+    /* border: 1px solid gray; */
+    cursor: grab;
+    box-shadow: 3px 3px 3px 3px rgb(235, 199, 199);
+}
