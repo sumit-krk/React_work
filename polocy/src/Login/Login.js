@@ -9,6 +9,11 @@ const Login=()=>{
             <div>
                 <button style={{padding:'5px',margin:'5px 5px'}}>Login</button>
             </div>
+            <h2>If you have already account</h2>
+            <div>
+                <span>Click On</span>
+                <span> <a href=""> Login</a> </span>
+            </div>
         </from>
     </div>
 }
