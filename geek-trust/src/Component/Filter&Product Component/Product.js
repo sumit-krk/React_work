@@ -7,11 +7,15 @@ import styles from './product.module.css'
 
 function Product() {
   const dispatch = useDispatch();
-  let data = useSelector((state)=>state.productData);
+  let {fetchData,filterData} = useSelector((state)=>state.productData);
+  let mappingData=filterData[0]?.length?filterData[0]:fetchData
+
   useEffect(()=>{
     dispatch(productList())
   },[])
-  console.log("data",data)
+
+  
+
   return (
     <div style={{display:'grid', gridTemplateColumns:'4fr 4fr 4fr', gridGap:'20px'}}>
       {/* <button onClick={() => dispatch(addToCart(product))}>Add To Cart</button>
@@ -23,8 +27,8 @@ function Product() {
       <div>
         <button onClick={() => dispatch(emptyCart())}>Empty Cart</button>
       </div> */}
-       {data.map((e)=>{ 
-            return <div className={styles.card}>
+       {mappingData.map((e,index)=>{ 
+            return <div className={styles.card} key={index}>
                 <div>{e?.name}</div>
                 <img height={200} weigth={150} src={e?.imageURL} />
                 <div style={{display:'flex',justifyContent:'space-around',padding:'5px',padding:'1px'}}>
