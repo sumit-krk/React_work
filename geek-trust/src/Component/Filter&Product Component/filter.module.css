@@ -1,0 +1,18 @@
+.check_box{
+    display: flex;
+    align-items: center;
+    /* padding-left: 35%; */
+    height: 30px;
+    /* cursor: pointer; */
+}
+.filter_Part{
+    border: 1px solid red;
+    width: 15%;
+    padding-left: 5%;
+    height: 400px;
+}
+.lable{
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
