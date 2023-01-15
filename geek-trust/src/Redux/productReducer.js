@@ -1,7 +1,8 @@
-import { SET_PRODUCT_LIST, SELECTED_DATA } from "./constant";
+import { SET_PRODUCT_LIST, SELECTED_DATA, SEARCH_DATA } from "./constant";
 const initialState={
     fetchData:[],
-    filterData:[]
+    filterData:[],
+    searchData:[],
 }
 export const productData = (data = initialState, action) => {
   switch (action.type) {
@@ -10,10 +11,20 @@ export const productData = (data = initialState, action) => {
       return {...data,fetchData:action.data};
     case SELECTED_DATA:
       return {...data, filterData:[filterHandler(data.fetchData, action.selectedData)]};
+    case SEARCH_DATA:
+        return {...data, searchData:[searchHandler(data.fetchData,action.text)]};
     default:
       return data;
   }
 };
+
+const searchHandler=(data,text)=>{
+    let result=data.filter((e)=>{
+        return e.name.includes(text);
+    })
+    return result;
+}
+
 const filterHandler = (data, selectedValues) => {
   let result = data.filter((e) => {
     if (selectedValues.includes(e.color)) {

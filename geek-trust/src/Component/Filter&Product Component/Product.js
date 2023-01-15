@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import {useSelector} from 'react-redux'
 import { addToCart, emptyCart, removeToCart } from '../../Redux/action';
@@ -6,9 +6,13 @@ import { productList } from '../../Redux/productAction';
 import styles from './product.module.css'
 
 function Product() {
+  const [searchDataNew,setSearchDataNew]=useState([]);
   const dispatch = useDispatch();
-  let {fetchData,filterData} = useSelector((state)=>state.productData);
+  let {fetchData,filterData,searchData} = useSelector((state)=>state.productData);
   let mappingData=filterData[0]?.length?filterData[0]:fetchData
+  if(searchData.length>0){
+    setSearchDataNew(searchData);
+  }
 
   useEffect(()=>{
     dispatch(productList())
@@ -27,7 +31,7 @@ function Product() {
       <div>
         <button onClick={() => dispatch(emptyCart())}>Empty Cart</button>
       </div> */}
-       {mappingData.map((e,index)=>{ 
+       {searchDataNew.length?<div>HELLLL</div>:mappingData.map((e,index)=>{ 
             return <div className={styles.card} key={index}>
                 <div>{e?.name}</div>
                 <img height={200} weigth={150} src={e?.imageURL} />

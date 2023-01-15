@@ -7,7 +7,7 @@ const Header=()=>{
         <div>TeeRex Store</div>
         <div>
           <i
-            class="fa fa-shopping-cart"
+            className="fa fa-shopping-cart"
             aria-hidden="true"
             style={{ fontSize: "35px", cursor: "pointer" }}
           >
