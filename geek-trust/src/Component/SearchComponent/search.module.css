@@ -1,0 +1,14 @@
+.searchDiv{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid red; */
+    padding-top: 15px;
+}
+input{
+    height: 40px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    outline: none;
+}
