@@ -6,10 +6,11 @@
     /* cursor: pointer; */
 }
 .filter_Part{
-    border: 1px solid red;
-    width: 15%;
-    padding-left: 5%;
-    height: 400px;
+    /* border: 1px solid red; */
+    /* width: 15%; */
+    padding: 0% 5%;
+    height: 420px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .lable{
     color: black;
