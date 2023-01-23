@@ -9,7 +9,7 @@ function Product() {
   const dispatch = useDispatch();
   let {fetchData,filterData,searchData} = useSelector((state)=>state.productData);
   let mappingData=filterData[0]?.length?filterData[0]:fetchData;
-  if(searchData.length>0){
+  if(searchData[0]?.length>0){
     mappingData=searchData[0]?.length?searchData[0]:fetchData;
   }
   else{

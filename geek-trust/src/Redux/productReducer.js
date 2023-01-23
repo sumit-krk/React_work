@@ -20,7 +20,7 @@ export const productData = (data = initialState, action) => {
 
 const searchHandler=(data,text)=>{
     let result=data.filter((e)=>{
-        return e.name.includes(text);
+        return e.name.includes(text.length && text);
     })
     console.log("search result",result)
     return result;
