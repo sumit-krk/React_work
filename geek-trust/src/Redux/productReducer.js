@@ -22,6 +22,7 @@ const searchHandler=(data,text)=>{
     let result=data.filter((e)=>{
         return e.name.includes(text);
     })
+    console.log("search result",result)
     return result;
 }
 

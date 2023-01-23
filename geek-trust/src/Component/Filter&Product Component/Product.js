@@ -6,32 +6,23 @@ import { productList } from '../../Redux/productAction';
 import styles from './product.module.css'
 
 function Product() {
-  const [searchDataNew,setSearchDataNew]=useState([]);
   const dispatch = useDispatch();
   let {fetchData,filterData,searchData} = useSelector((state)=>state.productData);
-  let mappingData=filterData[0]?.length?filterData[0]:fetchData
+  let mappingData=filterData[0]?.length?filterData[0]:fetchData;
   if(searchData.length>0){
-    setSearchDataNew(searchData);
+    mappingData=searchData[0]?.length?searchData[0]:fetchData;
+  }
+  else{
+    mappingData=filterData[0]?.length?filterData[0]:fetchData;
   }
 
   useEffect(()=>{
     dispatch(productList())
   },[])
 
-  
-
   return (
     <div style={{display:'grid', gridTemplateColumns:'4fr 4fr 4fr', gridGap:'20px'}}>
-      {/* <button onClick={() => dispatch(addToCart(product))}>Add To Cart</button>
-      <div>
-        <button onClick={() => dispatch(removeToCart(product.name))}>
-          Remove from Cart
-        </button>
-      </div>
-      <div>
-        <button onClick={() => dispatch(emptyCart())}>Empty Cart</button>
-      </div> */}
-       {searchDataNew.length?<div>HELLLL</div>:mappingData.map((e,index)=>{ 
+       {mappingData.map((e,index)=>{ 
             return <div className={styles.card} key={index}>
                 <div>{e?.name}</div>
                 <img height={200} weigth={150} src={e?.imageURL} />
