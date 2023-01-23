@@ -5,15 +5,32 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './Redux/store';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import CartPage from './Component/CartDataComponent/CartPage';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const appRouter=createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>
+  },
+  {
+    path:"/CartPage",
+    element:<CartPage />
+  }])
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={appRouter}>
+          <App />
+      </RouterProvider>
     </Provider>
   </React.StrictMode>
 );
+
+  // root.render(<RouterProvider router={appRouter}/>)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
