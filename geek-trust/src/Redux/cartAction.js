@@ -1,4 +1,4 @@
-import { DECREASE_QUENTITY, INCREASE_QUENTITY } from "./constant"
+import { DECREASE_QUENTITY, INCREASE_QUENTITY, REMOVE_PRODUCT } from "./constant"
 
 export const increaseProduct=(e,InitialPrice)=>{
     console.log("cartAction",e)
@@ -8,11 +8,17 @@ export const increaseProduct=(e,InitialPrice)=>{
         InitialPrice
     }
 }
-
 export const decrementProduct=(e,InitialPrice)=>{
     return {
         type:DECREASE_QUENTITY,
         id:e,
         InitialPrice
+    }
+}
+export const RemoveCartData=(id,price)=>{
+    return{
+        type: REMOVE_PRODUCT,
+        id,
+        price
     }
 }
