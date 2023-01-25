@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { increaseProduct } from "../../Redux/cartAction";
+import { decrementProduct, increaseProduct } from "../../Redux/cartAction";
 const CartPage=()=>{
     let data=useSelector((state)=> state.cartData.currentCartData);
     let dispatch=useDispatch();
@@ -31,7 +31,7 @@ const CartPage=()=>{
                   </div>
                   <div>{e.currentQuentity}</div>
                   <div>
-                    <button>-</button>
+                    <button onClick={()=> dispatch(decrementProduct(e.id))}>-</button>
                   </div>
                 </div>
                 <div>
