@@ -9,9 +9,10 @@ export const increaseProduct=(e,InitialPrice)=>{
     }
 }
 
-export const decrementProduct=(e)=>{
+export const decrementProduct=(e,InitialPrice)=>{
     return {
         type:DECREASE_QUENTITY,
-        id:e
+        id:e,
+        InitialPrice
     }
 }

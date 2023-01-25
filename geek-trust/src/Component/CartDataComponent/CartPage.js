@@ -44,7 +44,9 @@ const CartPage=()=>{
                   </div>
                   <div>{e.currentQuentity}</div>
                   <div>
-                    <button onClick={()=> dispatch(decrementProduct(e.id))}>-</button>
+                    {
+                        e.currentQuentity>1?<button onClick={()=> dispatch(decrementProduct(e.id,e.InitialPrice))} >-</button>:<button disabled>-</button>
+                    }
                   </div>
                 </div>
                 <div>

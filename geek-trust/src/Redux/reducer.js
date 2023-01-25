@@ -10,7 +10,7 @@ export const cartData = (data = initialState, action) => {
     case INCREASE_QUENTITY:
       return {...data,currentCartData:[...incrementCartProduct(data.currentCartData,action.id)],Totalprice:TotalPrice(data.currentCartData,action.InitialPrice)};
     case DECREASE_QUENTITY:
-      return {...data,currentCartData:[...decrementCartProduct(data.currentCartData,action.id)],Totalprice:TotalPrice(data.currentCartData,action.InitialPrice)};
+      return {...data,currentCartData:[...decrementCartProduct(data.currentCartData,action.id)],Totalprice:(data.Totalprice-action.InitialPrice)};
     default:
       return data;
   }
