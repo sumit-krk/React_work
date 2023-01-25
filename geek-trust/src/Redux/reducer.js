@@ -17,11 +17,11 @@ export const cartData = (data = initialState, action) => {
 };
 
 function incrementCartProduct(data,id){
-   let newData=data.map((e)=> e.id==id?{...e,price:calculatePrice(e.InitialPrice,e.currentQuentity+1),currentQuentity:e.currentQuentity+1}:e);
+   let newData=data.map((e)=>e.id==id?{...e,price:calculatePrice(e.InitialPrice,e.currentQuentity>=1?e.currentQuentity+1:1),currentQuentity:e.currentQuentity>=1?e.currentQuentity+1:1}:e);
    return newData
 }
 function decrementCartProduct(data,id){
-  let newData=data.map((e)=> e.id==id?{...e,currentQuentity:e.currentQuentity-1,price:calculatePrice(e.InitialPrice,e.currentQuentity-1)}:e);
+  let newData=data.map((e)=>e.id==id?{...e,price:calculatePrice(e.InitialPrice,e.currentQuentity>1?e.currentQuentity-1:1),currentQuentity:e.currentQuentity>1?e.currentQuentity-1:1}:e);
   return newData
 }
 
