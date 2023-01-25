@@ -2,7 +2,7 @@ import styles from './Header.module.css'
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 const Header=()=>{
-  let data = useSelector((state)=>state.cartData);
+  let data = useSelector((state)=>state.cartData.currentCartData);
     return (
       <div className={styles.header}>
         <div>TeeRex Store</div>

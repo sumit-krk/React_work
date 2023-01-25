@@ -28,7 +28,7 @@ function Product() {
                 <img height={200} weigth={150} src={e?.imageURL} />
                 <div style={{display:'flex',justifyContent:'space-around',padding:'5px',padding:'1px'}}>
                     <div>Rs {e?.price}</div>
-                    <div><button onClick={() => dispatch(addToCart(e))}>Add to Cart</button></div>
+                    <div><button onClick={() => dispatch(addToCart({...e,currentQuentity:1}))}>Add to Cart</button></div>
                 </div>
             </div>
        })}
