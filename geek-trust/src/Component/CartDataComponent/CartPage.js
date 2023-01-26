@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { decrementProduct, increaseProduct, RemoveCartData } from "../../Redux/cartAction";
+import styles from './CartPage.module.css';
 const CartPage=()=>{
     let data=useSelector((state)=> state.cartData.currentCartData);
     let Total_Price=useSelector((state)=> state.cartData.Totalprice);
@@ -8,8 +9,8 @@ const CartPage=()=>{
     console.log("cartData",data)
     return (
       <>
-        <h3 style={{ marginLeft: "30px" }}>Shopping Cart</h3>
-        <div style={{ marginLeft: "100px" }}>
+        <h3 className={styles.cart_page}>Shopping Cart</h3>
+        <div className={styles.cart_product}>
           {data.map((e) => {
             return (
               <div
@@ -64,7 +65,7 @@ const CartPage=()=>{
         </div>
 
         {
-          data.length>0?<div style={{ marginLeft: "200px", marginTop:'20px', display: "flex", width:'200px', justifyContent:'space-between' }}>
+          data.length>0?<div className={styles.total_amount}>
           <div style={{fontWeight:'bold'}}>Total Amount </div> 
           <div>Rs {Total_Price}</div>
         </div>:<h3>Opps!! No Any Product in cart</h3>
