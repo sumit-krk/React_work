@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { decrementProduct, increaseProduct, RemoveCartData } from "../../Redux/cartAction";
+import { Link } from 'react-router-dom';
 import styles from './CartPage.module.css';
 const CartPage=()=>{
     let data=useSelector((state)=> state.cartData.currentCartData);
@@ -68,7 +69,11 @@ const CartPage=()=>{
           data.length>0?<div className={styles.total_amount}>
           <div style={{fontWeight:'bold'}}>Total Amount </div> 
           <div>Rs {Total_Price}</div>
-        </div>:<h3>Opps!! No Any Product in cart</h3>
+        </div>:<div>
+          <h3>Opps!! No Any Product in cart</h3>
+          <h3><Link to="/">Go To Product page</Link> </h3>
+        </div>
+
         }
       </>
     );

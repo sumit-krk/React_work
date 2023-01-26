@@ -17,7 +17,8 @@ const appRouter=createBrowserRouter([
   {
     path:"/CartPage",
     element:<CartPage />
-  }])
+  }
+])
 
   const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

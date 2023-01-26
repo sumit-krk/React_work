@@ -21,18 +21,22 @@ function Product() {
   },[])
 
   return (
-    <div className={styles.product_page}>
-       {mappingData.map((e,index)=>{ 
-            return <div className={styles.card} key={index}>
-                <div>{e?.name}</div>
-                <img height={200} weigth={150} src={e?.imageURL} />
-                <div style={{display:'flex',justifyContent:'space-around',padding:'5px',padding:'1px'}}>
-                    <div>Rs {e?.price}</div>
-                    <div><button onClick={() => dispatch(addToCart({...e,currentQuentity:1,InitialPrice:e.price}))}>Add to Cart</button></div>
-                </div>
-            </div>
-       })}
-    </div>
+    <>
+      {
+        mappingData.length===0?<div>Loading....</div>:    <div className={styles.product_page}>
+        {mappingData.map((e,index)=>{ 
+             return <div className={styles.card} key={index}>
+                 <div>{e?.name}</div>
+                 <img height={200} weigth={150} src={e?.imageURL} />
+                 <div style={{display:'flex',justifyContent:'space-around',padding:'5px',padding:'1px'}}>
+                     <div>Rs {e?.price}</div>
+                     <div><button onClick={() => dispatch(addToCart({...e,currentQuentity:1,InitialPrice:e.price}))}>Add to Cart</button></div>
+                 </div>
+             </div>
+        })}
+     </div>
+      }
+    </>
   );
 }
 
