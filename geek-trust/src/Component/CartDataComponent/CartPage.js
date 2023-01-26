@@ -26,7 +26,7 @@ const CartPage=()=>{
                   <div>{e.name}</div>
                   <div>{e.price}</div>
                 </div>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", width:'16%', justifyContent:'space-between' }}>
                   <div>
                     <button
                       onClick={() =>
@@ -63,10 +63,12 @@ const CartPage=()=>{
           })}
         </div>
 
-        <div style={{ marginLeft: "200px", marginTop:'20px', display: "flex", width:'200px', justifyContent:'space-between' }}>
+        {
+          data.length>0?<div style={{ marginLeft: "200px", marginTop:'20px', display: "flex", width:'200px', justifyContent:'space-between' }}>
           <div style={{fontWeight:'bold'}}>Total Amount </div> 
           <div>Rs {Total_Price}</div>
-        </div>
+        </div>:<h3>Opps!! No Any Product in cart</h3>
+        }
       </>
     );
 }

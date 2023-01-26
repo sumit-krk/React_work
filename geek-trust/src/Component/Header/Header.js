@@ -6,20 +6,20 @@ const Header=()=>{
     return (
       <div className={styles.header}>
         <div>TeeRex Store</div>
-        <Link to="/CartPage">
-          <div>
+          <div style={{position:'relative'}}>
+          <Link to="/CartPage">
             <i
               className="fa fa-shopping-cart"
               aria-hidden="true"
-              style={{ fontSize: "35px", cursor: "pointer" }}
+              style={{ fontSize: "35px", cursor: "pointer",color:'gray' }}
             >
               <span id="cart_item_count"></span>
-              <span style={{ position: "absolute", top: "0px" }}>
+              <span style={{ position: "absolute", top: "4px", fontSize:'15px', borderRadius:'50%',padding:'3px',backgroundColor:'gray',color:'white' }}>
                 {data.length}
               </span>
             </i>
+            </Link>
           </div>
-        </Link>
       </div>
     );
 }
