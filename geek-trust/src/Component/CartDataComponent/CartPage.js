@@ -7,14 +7,13 @@ const CartPage=()=>{
     let data=useSelector((state)=> state.cartData.currentCartData);
     let Total_Price=useSelector((state)=> state.cartData.Totalprice);
     let dispatch=useDispatch();
-    console.log("cartData",data)
     return (
       <>
         <h3 className={styles.cart_page}>Shopping Cart</h3>
         <div className={styles.cart_product}>
           {data.map((e) => {
             return (
-              <div
+              <div key={e.id}
                 style={{
                   display: "flex",
                   borderBottom: "1px solid gray",

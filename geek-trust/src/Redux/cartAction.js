@@ -1,7 +1,6 @@
 import { DECREASE_QUENTITY, INCREASE_QUENTITY, REMOVE_PRODUCT } from "./constant"
 
 export const increaseProduct=(e,InitialPrice)=>{
-    console.log("cartAction",e)
     return {
         type:INCREASE_QUENTITY,
         id:e,

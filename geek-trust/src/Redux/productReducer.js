@@ -7,7 +7,6 @@ const initialState={
 export const productData = (data = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCT_LIST:
-      console.warn("PRODUCT_LIST condition ", action);
       return {...data,fetchData:action.data};
     case SELECTED_DATA:
       return {...data, filterData:[filterHandler(data.fetchData, action.selectedData)]};
