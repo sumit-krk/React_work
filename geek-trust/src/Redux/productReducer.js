@@ -20,9 +20,8 @@ export const productData = (data = initialState, action) => {
 
 const searchHandler=(data,text)=>{
     let result=data.filter((e)=>{
-        return e.name.includes(text.length && text);
+        return e.name.toLowerCase().includes(text.length && text.toLowerCase());
     })
-    console.log("search result",result)
     return result;
 }
 

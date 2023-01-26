@@ -31,7 +31,6 @@ function calculatePrice(InitialPrice,quentity){
 }
 
 function TotalPrice(data,InitialPrice){
-  console.log("datainReducer",data)
   let totalPriceOfCart=InitialPrice;
   for(let i=0;i<data.length;i++){
     totalPriceOfCart=totalPriceOfCart+data[i].price;
