@@ -21,7 +21,7 @@ function Product() {
   },[])
 
   return (
-    <div style={{display:'grid', gridTemplateColumns:'4fr 4fr 4fr', gridGap:'20px'}}>
+    <div className={styles.product_page}>
        {mappingData.map((e,index)=>{ 
             return <div className={styles.card} key={index}>
                 <div>{e?.name}</div>

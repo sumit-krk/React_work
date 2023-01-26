@@ -1,12 +1,10 @@
 .check_box{
     display: flex;
     align-items: center;
-    /* padding-left: 35%; */
     height: 30px;
     /* cursor: pointer; */
 }
 .filter_Part{
-    /* border: 1px solid red; */
     /* width: 15%; */
     padding: 0% 5%;
     height: 420px;
@@ -16,4 +14,9 @@
     color: black;
     font-weight: bold;
     font-size: 15px;
+}
+@media only screen and (max-width:400px){
+    .filter_Part{
+        display: none;
+    }
 }
