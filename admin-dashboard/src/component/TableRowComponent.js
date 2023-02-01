@@ -9,7 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const head=["Name","Email","Role","Actions"]
-const TableRowComponent=()=>{
+const TableRowComponent=({dashboardFilds})=>{
+    console.log("props",dashboardFilds)
     return (
       <TableContainer component={Paper}>
         <Table>
