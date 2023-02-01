@@ -1,12 +1,16 @@
-import { ALL_FILED } from "./constant"
+import { ALL_FILED, NEXT_PAGE } from "./constant"
 
 const initialFilds={
-    fild:[]
+    fild:[],
+    nextfild:[]
 }
 export const dashboardFilds=(state=initialFilds,action)=>{
     switch(action.type){
         case ALL_FILED:{
-            return {fild:[...action.data]}
+            return {...state,fild:[...action.data]}
+        }
+        case NEXT_PAGE:{
+            return {...state,nextfild:[state.fild.slice(10,21)]}
         }
         default:
             return state

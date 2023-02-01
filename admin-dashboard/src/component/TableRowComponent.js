@@ -35,7 +35,7 @@ const TableRowComponent=({dashboardFilds})=>{
             </TableRow>
           </TableHead>
           <TableBody>
-            {dashboardFilds.fild.map((user) => (
+            {dashboardFilds.map((user) => (
               <TableRow
                 key={user.id}
                 // sx={{
