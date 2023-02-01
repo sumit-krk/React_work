@@ -10,7 +10,7 @@ export const dashboardFilds=(state=initialFilds,action)=>{
             return {...state,fild:[...action.data]}
         }
         case NEXT_PAGE:{
-            return {...state,nextfild:[state.fild.slice(10,21)]}
+            return {...state,nextfild:[state.fild.slice((action.data-1)*10,action.data*10)]}
         }
         default:
             return state
