@@ -15,9 +15,10 @@ const Maindashboard=()=>{
     const handlePagenation=(e,value)=>{
         dispatch(getNextFileds(value))
     }
-    let AllData=dashboardFilds.nextfild.length>0?dashboardFilds.nextfild[0]:dashboardFilds.fild.slice(1,11);
+    let AllData=dashboardFilds.nextfild.length>0?dashboardFilds.nextfild[0]:dashboardFilds.fild.slice(1,10);
     return (
       <div>
+        <input style={{width:1200}} placeholder="Search by name, email or role"/>
         <TableRowComponent dashboardFilds={AllData} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
