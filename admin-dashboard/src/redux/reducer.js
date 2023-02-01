@@ -1,12 +1,12 @@
-import { GET_ALL_FILED } from "./constant"
+import { ALL_FILED } from "./constant"
 
 const initialFilds={
     fild:[]
 }
 export const dashboardFilds=(state=initialFilds,action)=>{
     switch(action.type){
-        case GET_ALL_FILED:{
-            return {}
+        case ALL_FILED:{
+            return {fild:[...state.fild,action.data]}
         }
         default:
             return state
