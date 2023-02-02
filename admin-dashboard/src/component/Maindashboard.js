@@ -6,11 +6,7 @@ import TableRowComponent from './TableRowComponent';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 const Maindashboard=()=>{
-  const [handleFild,setHandleFild]=useState(1);
   const [allFildData,setAllFildData]=useState([]);
-  const [searchAllFild,setSearchAllFild]=useState([]);
-  const [showFild,setShowFild]=useState([]);
-  const [searchText,setSearchText]=useState("");
 
     const dispatch=useDispatch();
     useEffect(()=>{
@@ -39,13 +35,8 @@ const Maindashboard=()=>{
 
 
     const handleInputChange=(e)=>{
-        setSearchText(e.target.value)
         dispatch(getSearchData(e.target.value));
     }
-
-    // useEffect(()=>{
-    //     setShowFild(allFildData.slice((handleFild-1)*10,handleFild*10));
-    // },[handleFild,dashboardFilds.nextfild,searchText])
 
     const handlePagenation=(e,value)=>{
       dispatch(getNextFileds(value))
