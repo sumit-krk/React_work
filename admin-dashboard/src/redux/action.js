@@ -1,4 +1,4 @@
-import { GET_ALL_FILED, NEXT_PAGE } from "./constant"
+import { GET_ALL_FILED, NEXT_PAGE, SEARCH_DATA } from "./constant"
 export const getAllfileds=()=>{
     return {
         type:GET_ALL_FILED
@@ -6,9 +6,15 @@ export const getAllfileds=()=>{
 }
 
 export const getNextFileds=(data)=>{
-    console.log("actiondata",data)
     return{
         type:NEXT_PAGE,
+        data
+    }
+}
+
+export const getSearchData=(data)=>{
+    return {
+        type:SEARCH_DATA,
         data
     }
 }

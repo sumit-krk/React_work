@@ -8,39 +8,52 @@ import Stack from '@mui/material/Stack';
 const Maindashboard=()=>{
   const [handleFild,setHandleFild]=useState(1);
   const [allFildData,setAllFildData]=useState([]);
+  const [searchAllFild,setSearchAllFild]=useState([]);
+  const [showFild,setShowFild]=useState([]);
+  const [searchText,setSearchText]=useState("");
 
     const dispatch=useDispatch();
     useEffect(()=>{
         dispatch(getAllfileds())
-        console.log("Hello from dispatch")
     },[])
 
     const { dashboardFilds }=useSelector((state)=>state);
-    console.log("next",dashboardFilds.fild)
 
       useEffect(()=>{
-        setAllFildData(dashboardFilds.fild)
+        setAllFildData(dashboardFilds.fild);
       },[dashboardFilds.fild])
-  
-    console.log("allFildData",allFildData)
 
-    const handlePagenation=(e,value)=>{
-        dispatch(getNextFileds(value))
-    }
+      useEffect(()=>{
+        if(dashboardFilds.nextfild.length>0){
+          setAllFildData(dashboardFilds.nextfild);
+        }
+        else{
+          setAllFildData(dashboardFilds.fild)
+        }
+      },[dashboardFilds.nextfild,searchText])
 
     const handleInputChange=(e)=>{
+        setSearchText(e.target.value)
         dispatch(getSearchData(e.target.value));
     }
+    
+    useEffect(()=>{
+        setShowFild(allFildData.slice((handleFild-1)*10,handleFild*10));
+    },[handleFild])
 
-    let AllData=dashboardFilds.nextfild.length>0?dashboardFilds.nextfild.length>9?dashboardFilds.nextfild.slice(0,10):dashboardFilds.nextfild:dashboardFilds.fild.slice(1,10);
-    console.log("allData",AllData);
+    console.log("showFild",showFild)
+
+    const handlePagenation=(e,value)=>{
+      setHandleFild(value)
+  }
+
     return (
       <div>
         <input style={{width:"98%",height:"30px",margin:'10px'}} onKeyUp={handleInputChange} placeholder="Search by name, email or role"/>
-        <TableRowComponent dashboardFilds={AllData} />
+        <TableRowComponent dashboardFilds={showFild.length<10?allFildData.slice(0,10):showFild} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
-            <Pagination count={Math.round(AllData.length>10?AllData.length/10:dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
+            <Pagination count={Math.round(allFildData.length<10?1:allFildData.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
           </Stack>
         </div>
       </div>
