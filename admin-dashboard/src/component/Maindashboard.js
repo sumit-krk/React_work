@@ -21,11 +21,11 @@ const Maindashboard=()=>{
     console.log("dasboard",dashboardFilds)
 
       useEffect(()=>{
-        setAllFildData(dashboardFilds.fild);
+        setAllFildData(dashboardFilds.fild.slice(0,10));
       },[dashboardFilds.fild])
 
       useEffect(()=>{
-          setAllFildData(dashboardFilds.nextfild);
+          setAllFildData(dashboardFilds.nextfild.slice(0,10));
       },[dashboardFilds.nextfild])
 
       useEffect(()=>{
@@ -38,9 +38,9 @@ const Maindashboard=()=>{
         dispatch(getSearchData(e.target.value));
     }
 
-    useEffect(()=>{
-        setShowFild(allFildData.slice((handleFild-1)*10,handleFild*10));
-    },[handleFild,dashboardFilds.nextfild,searchText])
+    // useEffect(()=>{
+    //     setShowFild(allFildData.slice((handleFild-1)*10,handleFild*10));
+    // },[handleFild,dashboardFilds.nextfild,searchText])
 
     const handlePagenation=(e,value)=>{
       dispatch(getNextFileds(value))
@@ -52,7 +52,7 @@ const Maindashboard=()=>{
         <TableRowComponent dashboardFilds={allFildData} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
-            <Pagination count={Math.round(allFildData.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
+            <Pagination count={5} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
           </Stack>
         </div>
       </div>

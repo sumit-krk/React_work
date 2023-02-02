@@ -12,10 +12,11 @@ export const dashboardFilds=(state=initialFilds,action)=>{
         }
         case NEXT_PAGE:{
             if(state.nextfild.length>0){
-                return {...state,nexprevfild:[...state.nextfild.slice(Math.round((action.value-1)*10,action.value*10))]}
+                return {...state,nexprevfild:[...state.nextfild.slice((action.data-1)*10,action.data*10)]}
             }
             else{
-                return {...state,nexprevfild:[...state.fild.slice(Math.round((action.value-1)*10,action.value*10))]} 
+                console.log("action.value",action.data)
+                return {...state,nexprevfild:[...state.fild.slice((action.data-1)*10,action.data*10)]}
             }
         }
         case SEARCH_DATA:{
@@ -29,7 +30,7 @@ export const dashboardFilds=(state=initialFilds,action)=>{
             }
         }
         default:
-            return {...state,fild:[...state.fild.slice(0,10)]}
+            return state;
     }
 }
 
