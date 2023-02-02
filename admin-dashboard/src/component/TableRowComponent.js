@@ -13,7 +13,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
 
 const head=["Name","Email","Role","Actions"]
-const TableRowComponent=({dashboardFilds})=>{
+const TableRowComponent=({dashboardFilds=[]})=>{
     console.log("props",dashboardFilds)
     return (
       <TableContainer component={Paper}>
