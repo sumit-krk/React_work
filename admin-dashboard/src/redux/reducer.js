@@ -3,6 +3,7 @@ import { ALL_FILED, NEXT_PAGE, SEARCH_DATA } from "./constant"
 const initialFilds={
     fild:[],
     nextfild:[],
+    nexprevfild:[]
 }
 export const dashboardFilds=(state=initialFilds,action)=>{
     switch(action.type){
@@ -10,13 +11,25 @@ export const dashboardFilds=(state=initialFilds,action)=>{
             return {...state,fild:[...action.data]}
         }
         case NEXT_PAGE:{
-            return {...state,nextfild:[...state.fild.slice((action.data-1)*10,action.data*10)]}
+            if(state.nextfild.length>0){
+                return {...state,nexprevfild:[...state.nextfild.slice(Math.round((action.value-1)*10,action.value*10))]}
+            }
+            else{
+                return {...state,nexprevfild:[...state.fild.slice(Math.round((action.value-1)*10,action.value*10))]} 
+            }
         }
         case SEARCH_DATA:{
-            return {...state,nextfild:[...searchAllData(state.fild,action.data)]}
+            if(action.data.length>0){
+                console.log("true")
+                return {...state,nextfild:[...searchAllData(state.fild,action.data)]}
+            }
+            else{
+                console.log("false")
+                return {...state,fild:[...state.fild]}
+            }
         }
         default:
-            return state
+            return {...state,fild:[...state.fild.slice(0,10)]}
     }
 }
 

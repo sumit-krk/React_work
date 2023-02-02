@@ -18,42 +18,41 @@ const Maindashboard=()=>{
     },[])
 
     const { dashboardFilds }=useSelector((state)=>state);
+    console.log("dasboard",dashboardFilds)
 
       useEffect(()=>{
         setAllFildData(dashboardFilds.fild);
       },[dashboardFilds.fild])
 
       useEffect(()=>{
-        if(dashboardFilds.nextfild.length>0){
           setAllFildData(dashboardFilds.nextfild);
-        }
-        else{
-          setAllFildData(dashboardFilds.fild)
-        }
-      },[dashboardFilds.nextfild,searchText])
+      },[dashboardFilds.nextfild])
+
+      useEffect(()=>{
+        setAllFildData(dashboardFilds.nexprevfild)
+      },[dashboardFilds.nexprevfild])
+
 
     const handleInputChange=(e)=>{
         setSearchText(e.target.value)
         dispatch(getSearchData(e.target.value));
     }
-    
+
     useEffect(()=>{
         setShowFild(allFildData.slice((handleFild-1)*10,handleFild*10));
-    },[handleFild])
-
-    console.log("showFild",showFild)
+    },[handleFild,dashboardFilds.nextfild,searchText])
 
     const handlePagenation=(e,value)=>{
-      setHandleFild(value)
+      dispatch(getNextFileds(value))
   }
 
     return (
       <div>
         <input style={{width:"98%",height:"30px",margin:'10px'}} onKeyUp={handleInputChange} placeholder="Search by name, email or role"/>
-        <TableRowComponent dashboardFilds={showFild.length<10?allFildData.slice(0,10):showFild} />
+        <TableRowComponent dashboardFilds={allFildData} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
-            <Pagination count={Math.round(allFildData.length<10?1:allFildData.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
+            <Pagination count={Math.round(allFildData.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
           </Stack>
         </div>
       </div>
