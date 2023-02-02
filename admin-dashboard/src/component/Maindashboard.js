@@ -25,7 +25,12 @@ const Maindashboard=()=>{
       },[dashboardFilds.fild])
 
       useEffect(()=>{
+        if(dashboardFilds.nextfild.length==0){
+          setAllFildData(dashboardFilds.fild.slice(0,10));
+        }
+        else{
           setAllFildData(dashboardFilds.nextfild.slice(0,10));
+        }
       },[dashboardFilds.nextfild])
 
       useEffect(()=>{
@@ -52,7 +57,7 @@ const Maindashboard=()=>{
         <TableRowComponent dashboardFilds={allFildData} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
-            <Pagination count={5} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
+            <Pagination count={dashboardFilds.length<10?1:Math.round(dashboardFilds.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
           </Stack>
         </div>
       </div>
