@@ -13,8 +13,10 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
 
 const head=["Name","Email","Role","Actions"]
-const TableRowComponent=({dashboardFilds=[]})=>{
-    console.log("props",dashboardFilds)
+const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
+  const handleCkeckBox=(e)=>{
+    handleSelectAllClick(e.target.checked);
+  }
     return (
       <TableContainer component={Paper}>
         <Table>
@@ -23,8 +25,8 @@ const TableRowComponent=({dashboardFilds=[]})=>{
               <TableCell padding="checkbox">
                 <Checkbox
                   color="primary"
-                  //   onClick={handleSelectAllClick}
-                  //   checked={selectAll}
+                    onClick={handleCkeckBox}
+                    // checked={selectAll}
                 />
               </TableCell>
               {head.map((header) => (
@@ -46,6 +48,7 @@ const TableRowComponent=({dashboardFilds=[]})=>{
                 <TableCell padding="checkbox">
                   <Checkbox
                     color="primary"
+                    checked='true'
                     // checked={isSelected(user.name)}
                     // onClick={(event) => handleClick(event, user.name)}
                   />
