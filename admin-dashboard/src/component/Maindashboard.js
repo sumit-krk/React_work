@@ -7,6 +7,9 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 const Maindashboard=()=>{
   const [allFildData,setAllFildData]=useState([]);
+  const [checked,setChecked]=useState(false);
+
+  console.log("checked",checked)
 
     const dispatch=useDispatch();
     useEffect(()=>{
@@ -42,10 +45,14 @@ const Maindashboard=()=>{
       dispatch(getNextFileds(value))
   }
 
+  const handleSelectAllClick=(value)=>{
+      setChecked(value)
+  }
+
     return (
       <div>
         <input style={{width:"98%",height:"30px",margin:'10px'}} onKeyUp={handleInputChange} placeholder="Search by name, email or role"/>
-        <TableRowComponent dashboardFilds={allFildData} />
+        <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
             <Pagination count={dashboardFilds.length<10?1:Math.round(dashboardFilds.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
