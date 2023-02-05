@@ -14,9 +14,27 @@ import IconButton from "@mui/material/IconButton";
 
 const head=["Name","Email","Role","Actions"]
 const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
+  let filterData=[];
+  let new_data;
   const handleCkeckBox=(e)=>{
     handleSelectAllClick(e.target.checked);
   }
+  const HandleCheckedBox=(user,id,e)=>{
+    if(e.target.checked){
+      if(filterData.length){ 
+          filterData.push(user)
+      }
+      else{
+        filterData.push(user)
+      }
+    }
+    else{
+       new_data=filterData.filter((e)=>e.id!=id);
+       filterData=new_data;
+    }
+    console.log(filterData);
+  }
+ 
     return (
       <TableContainer component={Paper}>
         <Table>
@@ -48,9 +66,9 @@ const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
                 <TableCell padding="checkbox">
                   <Checkbox
                     color="primary"
-                    checked='true'
                     // checked={isSelected(user.name)}
                     // onClick={(event) => handleClick(event, user.name)}
+                   onClick={(e)=>HandleCheckedBox(user,user.id,e)}
                   />
                 </TableCell>
                 <TableCell>{user.name}</TableCell>
