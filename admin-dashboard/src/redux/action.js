@@ -19,7 +19,8 @@ export const getSearchData=(data)=>{
     }
 }
 
-export const deleteSelectedData=(data)=>{
+export const deleteSelecteData=(data)=>{
+    console.log("data",data);
     return{
         type:DELETE_SELECTED_DATA,
         data
