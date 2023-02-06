@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from "react-redux";
-import { getAllfileds, getNextFileds, getSearchData } from "../redux/action";
+import { deleteSelecteData, getAllfileds, getNextFileds, getSearchData } from "../redux/action";
 import { useSelector } from 'react-redux';
 import TableRowComponent from './TableRowComponent';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 const Maindashboard=()=>{
   const [allFildData,setAllFildData]=useState([]);
-  const [checked,setChecked]=useState(false);
+  const [checkedData,setCheckedData]=useState([]);
 
-  console.log("checked",checked)
+  console.log("checkedData",checkedData)
 
     const dispatch=useDispatch();
     useEffect(()=>{
@@ -44,9 +44,12 @@ const Maindashboard=()=>{
     const handlePagenation=(e,value)=>{
       dispatch(getNextFileds(value))
   }
-
+  const deleteSelectedData=()=>{
+      dispatch(deleteSelecteData(checkedData))
+  }
   const handleSelectAllClick=(value)=>{
-      setChecked(value)
+    console.log("value",value);
+      setCheckedData([...checkedData,...value])
   }
 
     return (
@@ -55,9 +58,10 @@ const Maindashboard=()=>{
         <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
-            <Pagination count={dashboardFilds.length<10?1:Math.round(dashboardFilds.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
+            <Pagination count={Math.round(dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
           </Stack>
         </div>
+        <button onClick={deleteSelectedData}>Delete</button>
       </div>
     );
 }

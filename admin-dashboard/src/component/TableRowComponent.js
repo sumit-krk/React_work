@@ -16,16 +16,25 @@ const head=["Name","Email","Role","Actions"]
 const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
   let filterData=[];
   let new_data;
-  
+  // const handleCkeckBox=(e)=>{
+  //   handleSelectAllClick(e.target.checked);
+  // }
   const HandleCheckedBox=(user,id,e)=>{
     if(e.target.checked){
-      filterData.push(user)
+      if(filterData.length){ 
+          filterData.push(user)
+      }
+      else{
+        filterData.push(user)
+      }
     }
     else{
        new_data=filterData.filter((e)=>e.id!=id);
        filterData=new_data;
     }
-      handleSelectAllClick(filterData);
+    console.log("filterData",filterData);
+    handleSelectAllClick(filterData);
+    
   }
  
     return (
