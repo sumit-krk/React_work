@@ -31,7 +31,12 @@ export const dashboardFilds=(state=initialFilds,action)=>{
             }
         }
         case DELETE_SELECTED_DATA:{
-            return {...state,fild:[...deletedSelectedData(state.fild,action.data)],length:action.data.length}
+            if(state.nextfild.length>0){
+                return {...state,nextfild:[...deletedSelectedData(state.nextfild,action.data)],length:state.nextfild.length}
+            }
+           else{
+                return {...state,fild:[...deletedSelectedData(state.fild,action.data)],length:action.data.length}
+           }
         }
         default:
             return state;
