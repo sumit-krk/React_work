@@ -60,7 +60,7 @@ const Maindashboard=()=>{
     return (
       <div>
         <input style={{width:"98%",height:"30px",margin:'10px'}} onKeyUp={handleInputChange} placeholder="Search by name, email or role"/>
-        <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} handleCheckUnckeck={handleCheckUnckeck}  />
+        <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
             <Pagination count={Math.round(dashboardFilds.nextfild.length?dashboardFilds.nextfild.length/10:dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
