@@ -1,4 +1,4 @@
-import { ALL_FILED, NEXT_PAGE, SEARCH_DATA } from "./constant"
+import { ALL_FILED, NEXT_PAGE, SEARCH_DATA, DELETE_SELECTED_DATA } from "./constant"
 
 const initialFilds={
     fild:[],
@@ -30,9 +30,28 @@ export const dashboardFilds=(state=initialFilds,action)=>{
                 return {...state,fild:[...state.fild],nextfild:[],length:state.fild.length}
             }
         }
+        case DELETE_SELECTED_DATA:{
+            return {...state,fild:[...deletedSelectedData(state.fild,action.data)],length:action.data.length}
+        }
         default:
             return state;
     }
+}
+
+function deletedSelectedData(allData,data){
+    let arr=[];
+    for(let i=0;i<allData.length;i++){
+        let demo=false;
+        for(let j=0;j<data.length;j++){
+            if(data[j].id==allData[i].id){
+                demo=true;
+            }
+        }
+        if(demo==false){
+            arr.push(allData[i]);
+        }
+    }
+    return arr;
 }
 
 function searchAllData(data,text){
