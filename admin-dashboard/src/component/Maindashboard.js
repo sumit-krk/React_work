@@ -7,7 +7,8 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 const Maindashboard=()=>{
   const [allFildData,setAllFildData]=useState([]);
-  const [checkedData,setCheckedData]=useState([]);
+  // const [checkedData,setCheckedData]=useState([]);
+  let checkedData;
 
   console.log("checkedData",checkedData)
 
@@ -49,16 +50,20 @@ const Maindashboard=()=>{
   }
   const handleSelectAllClick=(value)=>{
     console.log("value",value);
-      setCheckedData([...checkedData,...value])
+    checkedData=value;
+  }
+
+  const handleCheckUnckeck=(arg)=>{
+      // arg(false)
   }
 
     return (
       <div>
         <input style={{width:"98%",height:"30px",margin:'10px'}} onKeyUp={handleInputChange} placeholder="Search by name, email or role"/>
-        <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} />
+        <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} handleCheckUnckeck={handleCheckUnckeck}  />
         <div style={{display:'flex',justifyContent:'center'}}>
           <Stack spacing={2}>
-            <Pagination count={Math.round(dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
+            <Pagination count={Math.round(dashboardFilds.nextfild.length?dashboardFilds.nextfild.length/10:dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
           </Stack>
         </div>
         <button onClick={deleteSelectedData}>Delete</button>
