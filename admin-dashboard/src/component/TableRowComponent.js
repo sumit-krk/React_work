@@ -11,15 +11,20 @@ import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
+import { Input } from '@mui/icons-material';
 
 const head=["Name","Email","Role","Actions"]
-const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
+const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckeck})=>{
+  const [mainCheck,setMainCheck]=React.useState(false);
+  console.log("mainCheck",mainCheck)
   let filterData=[];
   let new_data;
-  // const handleCkeckBox=(e)=>{
-  //   handleSelectAllClick(e.target.checked);
-  // }
-  const HandleCheckedBox=(user,id,e)=>{
+  
+  React.useEffect(()=>{
+    setMainCheck(false)
+  },[dashboardFilds])
+
+  const HandleCheckedBox=(e,user,id)=>{
     if(e.target.checked){
       if(filterData.length){ 
           filterData.push(user)
@@ -32,9 +37,12 @@ const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
        new_data=filterData.filter((e)=>e.id!=id);
        filterData=new_data;
     }
-    console.log("filterData",filterData);
-    handleSelectAllClick(filterData);
-    
+    handleSelectAllClick(filterData); 
+  }
+
+  const handleCkeckBox=()=>{
+    setMainCheck(!mainCheck);
+    handleSelectAllClick(dashboardFilds)
   }
  
     return (
@@ -44,9 +52,9 @@ const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
             <TableRow>
               <TableCell padding="checkbox">
                 <Checkbox
+                  checked={mainCheck}
                   color="primary"
-                    // onClick={handleCkeckBox}
-                    // checked={selectAll}
+                    onClick={(e)=>handleCkeckBox(e)}
                 />
               </TableCell>
               {head.map((header) => (
@@ -60,32 +68,26 @@ const TableRowComponent=({dashboardFilds=[],handleSelectAllClick})=>{
             {dashboardFilds.map((user) => (
               <TableRow
                 key={user.id}
-                // sx={{
-                //   ...(isSelected(user.name) && { backgroundColor: "#D3D3D3" }),
-                // }}
-                // onClick={(event) => handleClick(event, user.name)}
               >
-                <TableCell padding="checkbox">
+                  {mainCheck?( <input type='checkbox' checked={true} /> ):(<TableCell padding="checkbox">
                   <Checkbox
                     color="primary"
-                    // checked={isSelected(user.name)}
-                    // onClick={(event) => handleClick(event, user.name)}
-                   onClick={(e)=>HandleCheckedBox(user,user.id,e)}
+                    onClick={(e)=>HandleCheckedBox(e,user,user.id)}
                   />
-                </TableCell>
+                </TableCell>)
+                }
+
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.role}</TableCell>
                 <TableCell>
                   <IconButton
                     color="primary"
-                    // onClick={() => handleEdit(user.id)}
                   >
                     <EditLocationAltIcon />
                   </IconButton>
                   <IconButton
                     color="error"
-                    // onClick={() => handleDelete(user.id)}
                   >
                     <DeleteOutlineIcon />
                   </IconButton>
