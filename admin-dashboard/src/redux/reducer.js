@@ -1,4 +1,4 @@
-import { ALL_FILED, NEXT_PAGE, SEARCH_DATA, DELETE_SELECTED_DATA } from "./constant"
+import { ALL_FILED, NEXT_PAGE, SEARCH_DATA, DELETE_SELECTED_DATA, SINGLE_DELETE } from "./constant"
 
 const initialFilds={
     fild:[],
@@ -38,9 +38,16 @@ export const dashboardFilds=(state=initialFilds,action)=>{
                 return {...state,fild:[...deletedSelectedData(state.fild,action.data)],length:action.data.length}
            }
         }
+        case SINGLE_DELETE:{
+            return {...state,fild:[...deleteSingleData(state.fild,action.data)],length:action.data.length}
+        }
         default:
             return state;
     }
+}
+
+function deleteSingleData(allData,id){
+    return allData.filter((e)=>e.id!==id);
 }
 
 function deletedSelectedData(allData,data){
