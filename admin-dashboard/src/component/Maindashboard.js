@@ -7,8 +7,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 const Maindashboard=()=>{
   const [allFildData,setAllFildData]=useState([]);
-  const [deleteData,setDeleteData]=useState(false)
-  let checkedData;
+  let checkedData=[];
 
     const dispatch=useDispatch();
     useEffect(()=>{
@@ -35,34 +34,32 @@ const Maindashboard=()=>{
       },[dashboardFilds.nexprevfild])
 
 
-  const handleInputChange=(e)=>{
-        dispatch(getSearchData(e.target.value));
-  }
+      const handleInputChange=(e)=>{
+          dispatch(getSearchData(e.target.value));
+      }
 
-  const handlePagenation=(e,value)=>{
-      dispatch(getNextFileds(value))
-  }
-  const deleteSelectedData=()=>{
-      dispatch(deleteSelecteData(checkedData))
-  }
-  const handleSelectAllClick=(value)=>{
-    checkedData=value;
-    if(value.length){
-      setDeleteData(true)
+      const handlePagenation=(e,value)=>{
+        dispatch(getNextFileds(value))
+      }
+
+      const deleteSelectedData = () => {
+        if (checkedData.length == 0) {
+          alert("Select data first");
+        } else {
+          dispatch(deleteSelecteData(checkedData));
+        }
+      };
+
+     const handleSelectAllClick=(value)=>{
+      checkedData=value;
     }
-    else{
-      setDeleteData(false)
-    }
-  }
 
     return (
       <div>
         <input style={{width:"98%",height:"30px",margin:'10px'}} onKeyUp={handleInputChange} placeholder="Search by name, email or role"/>
         <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} />
         <div style={{display:'flex',width:'60%',justifyContent:'space-between'}}>
-            {deleteData?<button style={{border:'1px solid red',backgroundColor:'#FF5171',padding:'10px',borderRadius:'15px',margin:'3px 0px 0px 10px'}} onClick={deleteSelectedData}>Delete Selected</button>
-             :<button disabled style={{border:'1px solid red',backgroundColor:'#FF5171',padding:'10px',borderRadius:'15px',margin:'3px 0px 0px 10px'}} onClick={deleteSelectedData}>Delete Selected</button>
-            }
+          <button style={{border:'1px solid red',backgroundColor:'#FF5171',padding:'10px',borderRadius:'15px',margin:'3px 0px 0px 10px',cursor:'pointer'}} onClick={deleteSelectedData}>Delete Selected</button>
           <div>
             <Stack spacing={2}>
               <Pagination count={Math.round(dashboardFilds.nextfild.length?dashboardFilds.nextfild.length/10:dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
