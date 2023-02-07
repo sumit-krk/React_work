@@ -39,7 +39,12 @@ export const dashboardFilds=(state=initialFilds,action)=>{
            }
         }
         case SINGLE_DELETE:{
-            return {...state,fild:[...deleteSingleData(state.fild,action.data)],length:action.data.length}
+            if(state.nextfild.length>0){
+                return {...state,nextfild:[...deleteSingleData(state.nextfild,action.data)],length:state.nextfild.length}
+            }
+           else{
+                return {...state,fild:[...deleteSingleData(state.fild,action.data)],length:action.data.length}
+           }
         }
         default:
             return state;
