@@ -14,6 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import { Input } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { deleteSingleData } from '../redux/action';
+import styles from './TableRowComponent.module.css'
 
 const head=["Name","Email","Role","Actions"]
 const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckeck})=>{
@@ -76,7 +77,7 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
               <TableRow
                 key={user.id}
               >
-                  {mainCheck?( <input type='checkbox' checked={true} /> ):(<TableCell padding="checkbox">
+                  {mainCheck?( <input className={styles.inputbox} type='checkbox' checked={true} /> ):(<TableCell padding="checkbox">
                   <Checkbox
                     color="primary"
                     onClick={(e)=>HandleCheckedBox(e,user,user.id)}
