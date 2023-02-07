@@ -20,7 +20,6 @@ const head=["Name","Email","Role","Actions"]
 const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckeck})=>{
   const dispatch=useDispatch();
   const [mainCheck,setMainCheck]=React.useState(false);
-  console.log("mainCheck",mainCheck)
   let filterData=[];
   let new_data;
   
@@ -46,7 +45,12 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
 
   const handleCkeckBox=()=>{
     setMainCheck(!mainCheck);
-    handleSelectAllClick(dashboardFilds)
+    if(!mainCheck){
+      handleSelectAllClick(dashboardFilds)
+    }
+    else{
+      handleSelectAllClick([])
+    }
   }
 
   const handleSingleDelete=(id)=>{
