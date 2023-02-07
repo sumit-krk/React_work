@@ -12,9 +12,12 @@ import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
 import { Input } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { deleteSingleData } from '../redux/action';
 
 const head=["Name","Email","Role","Actions"]
 const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckeck})=>{
+  const dispatch=useDispatch();
   const [mainCheck,setMainCheck]=React.useState(false);
   console.log("mainCheck",mainCheck)
   let filterData=[];
@@ -43,6 +46,10 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
   const handleCkeckBox=()=>{
     setMainCheck(!mainCheck);
     handleSelectAllClick(dashboardFilds)
+  }
+
+  const handleSingleDelete=(id)=>{
+    dispatch(deleteSingleData(id))
   }
  
     return (
@@ -88,6 +95,7 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
                   </IconButton>
                   <IconButton
                     color="error"
+                    onClick={()=>handleSingleDelete(user.id)}
                   >
                     <DeleteOutlineIcon />
                   </IconButton>
