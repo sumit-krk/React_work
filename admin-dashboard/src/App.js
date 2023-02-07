@@ -4,7 +4,7 @@ import TableRowComponent from './component/TableRowComponent';
 function App() {
   return (
     <div className="App">
-      <div>Admin dashboard</div>
+      <div style={{display:'flex',justifyContent:'center',fontWeight:'bold',color:'blue'}}>Admin UI</div>
       <Maindashboard />
     </div>
   );
