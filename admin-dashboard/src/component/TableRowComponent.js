@@ -7,17 +7,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
-import { Input } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { deleteSingleData } from '../redux/action';
 import styles from './TableRowComponent.module.css'
 
 const head=["Name","Email","Role","Actions"]
-const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckeck})=>{
+const TableRowComponent=({dashboardFilds,handleSelectAllClick})=>{
   const dispatch=useDispatch();
   const [mainCheck,setMainCheck]=React.useState(false);
   let filterData=[];
@@ -45,6 +43,7 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
 
   const handleCkeckBox=()=>{
     setMainCheck(!mainCheck);
+    handleSelectAllClick(dashboardFilds)
     if(!mainCheck){
       handleSelectAllClick(dashboardFilds)
     }
@@ -69,8 +68,8 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
                     onClick={(e)=>handleCkeckBox(e)}
                 />
               </TableCell>
-              {head.map((header) => (
-                <TableCell key={header.id} sx={{ fontWeight: "1000" }}>
+              {head.map((header,index) => (
+                <TableCell key={index} sx={{ fontWeight: "1000" }}>
                   {header}
                 </TableCell>
               ))}
@@ -80,6 +79,7 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
             {dashboardFilds.map((user) => (
               <TableRow
                 key={user.id}
+                style={{backgroundColor:mainCheck ?'lightgrey':''}}
               >
                   {mainCheck?( <input className={styles.inputbox} type='checkbox' checked={true} /> ):(<TableCell padding="checkbox">
                   <Checkbox
@@ -88,7 +88,6 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick, handleCheckUnckec
                   />
                 </TableCell>)
                 }
-
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.role}</TableCell>
