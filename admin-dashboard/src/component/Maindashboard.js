@@ -7,10 +7,8 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 const Maindashboard=()=>{
   const [allFildData,setAllFildData]=useState([]);
-  // const [checkedData,setCheckedData]=useState([]);
+  const [deleteData,setDeleteData]=useState(false)
   let checkedData;
-
-  console.log("checkedData",checkedData)
 
     const dispatch=useDispatch();
     useEffect(()=>{
@@ -18,7 +16,6 @@ const Maindashboard=()=>{
     },[])
 
     const { dashboardFilds }=useSelector((state)=>state);
-    console.log("dasboard",dashboardFilds)
 
       useEffect(()=>{
         setAllFildData(dashboardFilds.fild.slice(0,10));
@@ -38,35 +35,40 @@ const Maindashboard=()=>{
       },[dashboardFilds.nexprevfild])
 
 
-    const handleInputChange=(e)=>{
+  const handleInputChange=(e)=>{
         dispatch(getSearchData(e.target.value));
-    }
+  }
 
-    const handlePagenation=(e,value)=>{
+  const handlePagenation=(e,value)=>{
       dispatch(getNextFileds(value))
   }
   const deleteSelectedData=()=>{
       dispatch(deleteSelecteData(checkedData))
   }
   const handleSelectAllClick=(value)=>{
-    console.log("value",value);
     checkedData=value;
-  }
-
-  const handleCheckUnckeck=(arg)=>{
-      // arg(false)
+    if(value.length){
+      setDeleteData(true)
+    }
+    else{
+      setDeleteData(false)
+    }
   }
 
     return (
       <div>
         <input style={{width:"98%",height:"30px",margin:'10px'}} onKeyUp={handleInputChange} placeholder="Search by name, email or role"/>
         <TableRowComponent dashboardFilds={allFildData} handleSelectAllClick={handleSelectAllClick} />
-        <div style={{display:'flex',justifyContent:'center'}}>
-          <Stack spacing={2}>
-            <Pagination count={Math.round(dashboardFilds.nextfild.length?dashboardFilds.nextfild.length/10:dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
-          </Stack>
+        <div style={{display:'flex',width:'60%',justifyContent:'space-between'}}>
+            {deleteData?<button style={{border:'1px solid red',backgroundColor:'#FF5171',padding:'10px',borderRadius:'15px',margin:'3px 0px 0px 10px'}} onClick={deleteSelectedData}>Delete Selected</button>
+             :<button disabled style={{border:'1px solid red',backgroundColor:'#FF5171',padding:'10px',borderRadius:'15px',margin:'3px 0px 0px 10px'}} onClick={deleteSelectedData}>Delete Selected</button>
+            }
+          <div>
+            <Stack spacing={2}>
+              <Pagination count={Math.round(dashboardFilds.nextfild.length?dashboardFilds.nextfild.length/10:dashboardFilds.fild.length/10)} showFirstButton showLastButton color="primary" onChange={handlePagenation} />
+            </Stack>
+          </div>
         </div>
-        <button onClick={deleteSelectedData}>Delete</button>
       </div>
     );
 }
