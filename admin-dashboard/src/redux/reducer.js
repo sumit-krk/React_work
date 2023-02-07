@@ -16,17 +16,14 @@ export const dashboardFilds=(state=initialFilds,action)=>{
                 return {...state,nexprevfild:[...state.nextfild.slice((action.data-1)*10,action.data*10)],length:state.nextfild.length}
             }
             else{
-                console.log("action.value",action.data)
                 return {...state,nexprevfild:[...state.fild.slice((action.data-1)*10,action.data*10)],length:state.fild.length}
             }
         }
         case SEARCH_DATA:{
             if(action.data.length>0){
-                console.log("true")
                 return {...state,nextfild:[...searchAllData(state.fild,action.data)],length:state.nextfild.length<10?1:state.nextfild.length}
             }
             else{
-                console.log("false")
                 return {...state,fild:[...state.fild],nextfild:[],length:state.fild.length}
             }
         }
@@ -52,7 +49,7 @@ export const dashboardFilds=(state=initialFilds,action)=>{
 }
 
 function deleteSingleData(allData,id){
-    return allData.filter((e)=>e.id!==id);
+    return allData.filter((e)=>e.id!=id);
 }
 
 function deletedSelectedData(allData,data){
