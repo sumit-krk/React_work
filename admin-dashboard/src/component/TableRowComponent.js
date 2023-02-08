@@ -11,13 +11,42 @@ import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
 import { useDispatch } from 'react-redux';
-import { deleteSingleData } from '../redux/action';
+import { deleteSingleData, editData } from '../redux/action';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 import styles from './TableRowComponent.module.css'
 
-const head=["Name","Email","Role","Actions"]
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 1000,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
 const TableRowComponent=({dashboardFilds,handleSelectAllClick})=>{
+  const head=["Name","Email","Role","Actions"]
   const dispatch=useDispatch();
   const [mainCheck,setMainCheck]=React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [name, setName] = React.useState('');
+  const [mail, setMail] = React.useState('');
+  const [role, setRole] = React.useState('');
+  const [id,setId]=React.useState("");
+  const handleOpen = () => setOpen(true);
+  const handleClose = () =>{
+     setOpen(false);
+     setName("")
+     setMail("")
+     setRole("")
+     setId("");
+  }
+
   let filterData=[];
   let new_data;
   
@@ -55,9 +84,46 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick})=>{
   const handleSingleDelete=(id)=>{
     dispatch(deleteSingleData(id))
   }
+
+  const handleEdit=(id,name,email,role)=>{
+    handleOpen()
+    setId(id);
+    setName(name)
+     setMail(email)
+     setRole(role)
+  }
+
+  const editName=(e)=>{
+    setName(e.target.value)
+  }
+
+  const editEmail=(e)=>{
+    setMail(e.target.value)
+  }
+
+  const editRole=(e)=>{
+    setRole(e.target.value)
+  }
+
+  const applyEdit=()=>{
+    let data={
+      name,
+      mail,
+      role,
+      id
+    }
+    if(name.length==0 || mail.length==0 || role.length==0){
+      alert("Plz Fill the data")
+    }
+    else{
+      dispatch(editData(data))
+      handleClose();
+    }
+  }
  
     return (
-      <TableContainer component={Paper}>
+      <>
+        <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
@@ -94,6 +160,7 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick})=>{
                 <TableCell>
                   <IconButton
                     color="primary"
+                    onClick={()=>handleEdit(user.id,user.name,user.email,user.role)}
                   >
                     <EditLocationAltIcon />
                   </IconButton>
@@ -109,6 +176,30 @@ const TableRowComponent=({dashboardFilds,handleSelectAllClick})=>{
           </TableBody>
         </Table>
       </TableContainer>
+      <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box sx={style}>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+          Edit data
+        </Typography>
+        <Typography id="modal-modal-description" sx={{ mt: 2 }} style={{display:'flex',justifyContent:'space-between'}}>
+          <input placeholder='Enter new name...' style={{border:'1px solid black',width:'250px',height:'30px',borderRadius:'10px'}} onChange={editName} value={name} />
+          <input placeholder='Enter new email...' style={{border:'1px solid black',width:'250px',height:'30px',borderRadius:'10px'}} onChange={editEmail} value={mail} />
+          <input placeholder='Enter new role...' style={{border:'1px solid black',width:'250px',height:'30px',borderRadius:'10px'}} onChange={editRole} value={role} />
+        </Typography>
+        <Typography>
+        <div style={{display:'flex',justifyContent:'center',padding:'2%'}}>
+            <button style={{padding:'1%',margin:"0px 5px",cursor:'pointer'}} onClick={applyEdit}> Apply </button>
+            <button style={{padding:'1%',margin:"0px 5px",cursor:'pointer'}} onClick={handleClose}> Cancle </button>
+          </div>
+        </Typography>
+      </Box>
+    </Modal>
+      </>
     );
 }
 export default TableRowComponent
