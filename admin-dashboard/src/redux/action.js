@@ -1,4 +1,4 @@
-import { GET_ALL_FILED, NEXT_PAGE, SEARCH_DATA, DELETE_SELECTED_DATA, SINGLE_DELETE } from "./constant"
+import { GET_ALL_FILED, NEXT_PAGE, SEARCH_DATA, DELETE_SELECTED_DATA, SINGLE_DELETE, EDIT_DATA } from "./constant"
 export const getAllfileds=()=>{
     return {
         type:GET_ALL_FILED
@@ -30,6 +30,14 @@ export const deleteSelecteData=(data)=>{
 export const deleteSingleData=(data)=>{
     return{
         type:SINGLE_DELETE,
+        data
+    }
+}
+
+export const editData=(data)=>{
+    console.log(data);
+    return {
+        type:EDIT_DATA,
         data
     }
 }
