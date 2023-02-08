@@ -1,4 +1,4 @@
-import { ALL_FILED, NEXT_PAGE, SEARCH_DATA, DELETE_SELECTED_DATA, SINGLE_DELETE } from "./constant"
+import { ALL_FILED, NEXT_PAGE, SEARCH_DATA, DELETE_SELECTED_DATA, SINGLE_DELETE, EDIT_DATA } from "./constant"
 
 const initialFilds={
     fild:[],
@@ -43,9 +43,30 @@ export const dashboardFilds=(state=initialFilds,action)=>{
                 return {...state,fild:[...deleteSingleData(state.fild,action.data)],length:action.data.length}
            }
         }
+        case EDIT_DATA:{
+            if(state.nextfild.length>0){
+                return {...state,nextfild:[...editData(state.nextfild,action.data)],length:state.nextfild.length}
+            }
+           else{
+                return {...state,fild:[...editData(state.fild,action.data)],length:action.data.length}
+           }
+        }
         default:
             return state;
     }
+}
+
+function editData(alldata,data){
+    let array=[];
+    for(let i=0;i<alldata.length;i++){
+        if(alldata[i].id==data.id){
+            alldata[i].name=data.name
+            alldata[i].email=data.mail
+            alldata[i].role=data.role
+        }
+        array.push(alldata[i])
+    }
+    return array;
 }
 
 function deleteSingleData(allData,id){
