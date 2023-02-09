@@ -34,7 +34,6 @@ export const deleteSingleData=(data)=>{
 }
 
 export const editData=(data)=>{
-    console.log(data);
     return {
         type:EDIT_DATA,
         data
