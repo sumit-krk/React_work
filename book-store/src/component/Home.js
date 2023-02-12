@@ -38,9 +38,12 @@ const SimpleSlider=()=> {
     };
     return (
       <>
-        <div>
-          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png" />
+        <div className="header">
+          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png" style={{padding:'0px 0px 0px 40px'}} />
           <input placeholder="Search by Title, Author, Publisher or ISBN" style={{width:'400px',height:'30px',border:'1px solid red'}}/>
+          <div>
+            <p1 style={{padding:'0px 60px 0px 0px'}}>My Account</p1>
+          </div>
         </div>
         <div> <img src="https://www.bookswagon.com/images/promotionimages/web/1_alltimefavourite.jpg?v=1.6" style={{width:'100%',height:'100px'}} /> </div>
         <Slider {...settings}>
