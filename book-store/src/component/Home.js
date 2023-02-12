@@ -25,7 +25,6 @@ const SimpleSlider=()=> {
             style={{ ...style, height:'30px', width:'30px', display: "flex", alignItems:'center', justifyContent:'center', background: "#d92e28" }}
             onClick={onClick}
           >
-             {/* <FontAwesomeIcon icon="fa-solid fa-chevron-right" /> */}
           </div>
         );
       }
@@ -39,25 +38,29 @@ const SimpleSlider=()=> {
     };
     return (
       <>
+        <div>
+          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png" />
+          <input placeholder="Search by Title, Author, Publisher or ISBN" style={{width:'400px',height:'30px',border:'1px solid red'}}/>
+        </div>
         <div> <img src="https://www.bookswagon.com/images/promotionimages/web/1_alltimefavourite.jpg?v=1.6" style={{width:'100%',height:'100px'}} /> </div>
         <Slider {...settings}>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/81_inr.jpg?v=1.4' style={{width:'100%',height:'500px'}} />
+            <img src='https://www.bookswagon.com/images/bannerimages/81_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/80_inr.jpg?v=1.4' style={{width:'100%',height:'500px'}} />
+            <img src='https://www.bookswagon.com/images/bannerimages/80_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/79_inr.jpg?v=1.4' style={{width:'100%',height:'500px'}} />
+            <img src='https://www.bookswagon.com/images/bannerimages/79_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/82_inr.jpg?v=1.4' style={{width:'100%',height:'500px'}} />
+            <img src='https://www.bookswagon.com/images/bannerimages/82_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/83_inr.jpg?v=1.4' style={{width:'100%',height:'500px'}} />
+            <img src='https://www.bookswagon.com/images/bannerimages/83_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/84_inr.jpg?v=1.4' style={{width:'100%',height:'500px'}} />
+            <img src='https://www.bookswagon.com/images/bannerimages/84_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
           </div>
         </Slider>
       </>
