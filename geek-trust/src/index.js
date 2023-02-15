@@ -7,17 +7,26 @@ import { Provider } from 'react-redux';
 import store from './Redux/store';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CartPage from './Component/CartDataComponent/CartPage';
+import ProductSearch from './Component/ProductList&CartComponent/ProductSearch';
 
 
 const appRouter=createBrowserRouter([
   {
     path: "/",
-    element: <App/>
-  },
-  {
-    path:"/CartPage",
-    element:<CartPage />
+    element: <App/>,
+    // errorElement: <Error />
+    children:[
+      {
+        path:'/',
+        element:<ProductSearch />
+      },
+      {
+        path:"/CartPage",
+        element:<CartPage />
+      }
+    ]
   }
+  
 ])
 
   const root = ReactDOM.createRoot(document.getElementById('root'));
