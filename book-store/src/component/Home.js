@@ -3,7 +3,6 @@ import "slick-carousel/slick/slick-theme.css";
 import React, { Component } from "react";
 import Slider from "react-slick";
 import './Home.css';
-import Header from "./Header";
 import { Link } from "react-router-dom";
 
 
@@ -41,7 +40,6 @@ const Home=()=> {
     };
     return (
       <>
-        <Header />
         <Link to='/product'>
           <div> <img src="https://www.bookswagon.com/images/promotionimages/web/1_alltimefavourite.jpg?v=1.6" style={{width:'100%',height:'100px'}} /> </div>
         </Link>
