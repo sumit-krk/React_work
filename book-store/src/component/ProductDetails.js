@@ -2,16 +2,46 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BiRupee } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/action";
+import { useSelector } from "react-redux";
 const ProductDetails=()=>{
-    const [productDetails,setProductDetails]=useState([]);
+    const dispatch=useDispatch(); 
+   const [productDetails,setProductDetails]=useState([]);
    const {id,price}=useParams();
+   const {cartData}=useSelector((state)=>state.BookData)
+   console.log(cartData);
    useEffect(()=>{
     getproductDetails();
    },[])
    const getproductDetails= async()=>{
         let data=await fetch(`https://example-data.draftbit.com/books/${id}`)
         data=await data.json();
-        setProductDetails({...data,price})
+        setProductDetails({...data,price,quantity:1})
+   }
+   const handleAddProduct=()=>{
+    let dummy=false;
+        if(cartData.length===0){
+            alert("Product Added In Cart");
+            dispatch(addToCart(productDetails))
+        }
+        else{
+            for(let i=0;i<cartData.length;i++){
+                if(cartData[i].id==productDetails.id){
+                    dummy=true;
+                }
+            }
+            if(dummy==true){
+                alert("Product Already In Cart")
+            }
+            else{
+                alert("Product Added In Cart");
+                dispatch(addToCart(productDetails)) 
+            }
+        }
+   }
+   const handleWatchList=()=>{
+    console.log("yes")
    }
     return(
         <>
@@ -31,8 +61,8 @@ const ProductDetails=()=>{
                     </div>
                     <div style={{fontSize:'25px',fontWeight:'bold',marginTop:'10px',display:'flex',alignItems:'center'}}><span style={{display:'flex'}}><BiRupee /></span>{productDetails.price}</div>
                     <div>
-                        <button style={{backgroundColor:'#FF9F00',padding:'10px',color:'white',marginRight:'15px',border:'1px solid white',cursor:'pointer'}}>Add To Cart</button>
-                        <button style={{backgroundColor:'#FB641B',padding:'10px',color:'white',border:'1px solid white',cursor:'pointer'}}>Add To Wichlist</button>
+                        <button style={{backgroundColor:'#FF9F00',padding:'10px',color:'white',marginRight:'15px',border:'1px solid white',cursor:'pointer'}} onClick={handleAddProduct}>Add To Cart</button>
+                        <button style={{backgroundColor:'#FB641B',padding:'10px',color:'white',border:'1px solid white',cursor:'pointer'}} onClick={handleWatchList}>Add To Wichlist</button>
                     </div>
                 </div>
             </div>
