@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { BiRupee } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
-import Header from "./Header";
 import Filter from "./Filter";
 import { Link } from "react-router-dom";
 const Product=()=>{
@@ -17,7 +16,6 @@ const Product=()=>{
 
     return (
       <>
-        <Header />
         <div style={{display:'flex'}}>
           <Filter />
           <div style={{ display: "flex", flexWrap: "wrap",width:'85%',justifyContent:'space-around' }}>
