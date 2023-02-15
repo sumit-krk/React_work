@@ -6,6 +6,7 @@ import { BiRupee } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import Header from "./Header";
 import Filter from "./Filter";
+import { Link } from "react-router-dom";
 const Product=()=>{
     const dispatch=useDispatch();
     const {currentBookData} = useSelector((state)=> state.BookData);
@@ -22,7 +23,8 @@ const Product=()=>{
           <div style={{ display: "flex", flexWrap: "wrap",width:'85%',justifyContent:'space-around' }}>
             {currentBookData.map((e) => {
               return (
-                <div
+                <Link to={`/productdetails/${e.id}/${e.price}`}>
+                    <div
                   style={{
                     width: "200px",
                     height: "350px",
@@ -42,6 +44,7 @@ const Product=()=>{
                     </div>
                   </div>
                 </div>
+                </Link>
               );
             })}
           </div>
