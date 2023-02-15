@@ -3,10 +3,13 @@ import {RxDividerVertical} from 'react-icons/rx';
 import {AiOutlineHeart} from 'react-icons/ai'
 import { FaSearch } from "react-icons/fa";
 import './Header.css';
+import { Link } from 'react-router-dom';
 const Header=()=>{
     return (
         <div className="header">
-          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png" style={{padding:'0px 0px 0px 40px'}} />
+          <Link to='/'>
+            <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png" style={{padding:'0px 0px 0px 40px'}} />
+          </Link>
           <div style={{display:'flex'}}>
             <input placeholder="Search by Title, Author, Publisher or ISBN" style={{width:'400px',height:'30px',border:'1px solid red'}}/>
             <FaSearch style={{backgroundColor:'red',color:'white',padding:'9px',display:'flex',cursor:'pointer'}} />
