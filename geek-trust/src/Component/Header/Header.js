@@ -6,7 +6,13 @@ const Header=()=>{
     return (
       <div className={styles.header}>
         <div>TeeRex Store</div>
-          <div style={{position:'relative'}}>
+        <div style={{position:'relative',display:'flex',alignItems:'center'}}>
+          <div style={{fontWeight:'bold',color:'black',paddingRight:'20px'}}>
+            <Link to='/' style={{textDecoration:'none'}}>
+              Products
+            </Link>
+          </div>
+          <div>
           <Link to="/CartPage">
             <i
               className="fa fa-shopping-cart"
@@ -20,6 +26,7 @@ const Header=()=>{
             </i>
             </Link>
           </div>
+         </div>
       </div>
     );
 }
