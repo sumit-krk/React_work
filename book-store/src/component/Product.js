@@ -1,25 +1,33 @@
 import { useDispatch } from "react-redux"
 import { gatAllBookData } from "../Redux/action";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BiRupee } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import Filter from "./Filter";
 import { Link } from "react-router-dom";
 const Product=()=>{
     const dispatch=useDispatch();
-    const {currentBookData} = useSelector((state)=> state.BookData);
-    console.log(currentBookData)
+    const {currentBookData,filterData} = useSelector((state)=> state.BookData);
+    console.log("currentBookData",currentBookData)
+    let dummyData=[];
     useEffect(()=>{
-        dispatch(gatAllBookData())
+          dispatch(gatAllBookData())
     },[])
+
+    if(filterData.length>0){
+      dummyData=filterData;
+    }
+    else{
+      dummyData=currentBookData;
+    }
 
     return (
       <>
         <div style={{display:'flex'}}>
           <Filter />
           <div style={{ display: "flex", flexWrap: "wrap",width:'85%',justifyContent:'space-around' }}>
-            {currentBookData.map((e) => {
+            {dummyData.map((e) => {
               return (
                 <Link to={`/productdetails/${e.id}/${e.price}`}>
                     <div
