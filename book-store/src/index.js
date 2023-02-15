@@ -13,16 +13,22 @@ import Home from './component/Home';
 const appRouter=createBrowserRouter([
   {
     path:'/',
-    element:<Home />
+    element:<App />,
+    children:[
+      {
+        path:'/',
+        element: <Home />
+      },
+      {
+        path:'/product',
+        element: <Product />
+      },
+      {
+        path:'/productdetails/:id/:price',
+        element: <ProductDetails />
+      }
+    ]
   },
-  {
-    path:'/product',
-    element: <Product />
-  },
-  {
-    path:'/productdetails/:id/:price',
-    element:<ProductDetails />
-  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

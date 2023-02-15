@@ -1,12 +1,12 @@
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import Home from './component/Home';
-import Product from './component/Product';
+import Header from './component/Header';
 
 function App() {
   return (
    <>
-       {/* <Home /> */}
-      <Product />
+       <Header />
+       <Outlet />
    </>
   );
 }
