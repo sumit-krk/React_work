@@ -8,4 +8,5 @@ input:focus{
     padding: 10px 0px;
     border-bottom: 1px solid red;
     margin-bottom: 5px;
+    position: relative;
   }
