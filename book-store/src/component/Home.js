@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import './Home.css';
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 
 const Home=()=> {
@@ -41,26 +42,41 @@ const Home=()=> {
     return (
       <>
         <Header />
-        <div> <img src="https://www.bookswagon.com/images/promotionimages/web/1_alltimefavourite.jpg?v=1.6" style={{width:'100%',height:'100px'}} /> </div>
+        <Link to='/product'>
+          <div> <img src="https://www.bookswagon.com/images/promotionimages/web/1_alltimefavourite.jpg?v=1.6" style={{width:'100%',height:'100px'}} /> </div>
+        </Link>
         <Slider {...settings}>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/81_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            <Link to='/product'>
+              <img src='https://www.bookswagon.com/images/bannerimages/81_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            </Link>
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/80_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            <Link to='/product'>
+              <img src='https://www.bookswagon.com/images/bannerimages/80_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            </Link>
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/79_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            <Link to='/product'>
+              <img src='https://www.bookswagon.com/images/bannerimages/79_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            </Link>
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/82_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            <Link to='/product'>
+              <img src='https://www.bookswagon.com/images/bannerimages/82_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            </Link>
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/83_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            <Link to='/product'>
+              <img src='https://www.bookswagon.com/images/bannerimages/83_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            </Link>
           </div>
           <div>
-            <img src='https://www.bookswagon.com/images/bannerimages/84_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            <Link to='/product'>
+              <img src='https://www.bookswagon.com/images/bannerimages/84_inr.jpg?v=1.4' style={{width:'100%',height:'400px'}} />
+            </Link>
           </div>
+        
         </Slider>
       </>
     );
