@@ -17,11 +17,11 @@ const Header=()=>{
               <i
                 className="fa fa-shopping-cart"
                 aria-hidden="true"
-                style={{ fontSize: "35px", cursor: "pointer",color:'gray' }}
+                style={{ fontSize: "25px", cursor: "pointer",color:'gray' }}
               >
               </i>
             </Link>
-            <span style={{ position: "absolute", top: "-6px", fontSize:'15px', borderRadius:'50%',padding:'3px',backgroundColor:'gray',color:'white' }}>
+            <span style={{ position: "absolute", top: "-4px", fontSize:'12px', borderRadius:'50%',padding:'3px',backgroundColor:'gray',color:'white' }}>
                 {data.length}
               </span>
           </div>
