@@ -6,25 +6,24 @@ const Header=()=>{
     return (
       <div className={styles.header}>
         <div>TeeRex Store</div>
-        <div style={{position:'relative',display:'flex',alignItems:'center'}}>
+        <div style={{position:'relative',display:'flex',alignItems:'center',marginRight:'30px'}}>
           <div style={{fontWeight:'bold',color:'black',paddingRight:'20px'}}>
             <Link to='/' style={{textDecoration:'none'}}>
               Products
             </Link>
           </div>
-          <div>
-          <Link to="/CartPage">
-            <i
-              className="fa fa-shopping-cart"
-              aria-hidden="true"
-              style={{ fontSize: "35px", cursor: "pointer",color:'gray' }}
-            >
-              <span id="cart_item_count"></span>
-              <span style={{ position: "absolute", top: "4px", fontSize:'15px', borderRadius:'50%',padding:'3px',backgroundColor:'gray',color:'white' }}>
+          <div style={{position:'relative'}}>
+            <Link to="/CartPage">
+              <i
+                className="fa fa-shopping-cart"
+                aria-hidden="true"
+                style={{ fontSize: "35px", cursor: "pointer",color:'gray' }}
+              >
+              </i>
+            </Link>
+            <span style={{ position: "absolute", top: "-6px", fontSize:'15px', borderRadius:'50%',padding:'3px',backgroundColor:'gray',color:'white' }}>
                 {data.length}
               </span>
-            </i>
-            </Link>
           </div>
          </div>
       </div>
