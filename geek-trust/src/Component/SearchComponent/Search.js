@@ -23,7 +23,7 @@ const style = {
 const Search=()=>{
     const dispatch=useDispatch();
     const [text,setText]=useState("")
-    const [open, setOpen] = React.useState(false);
+    const [open,setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const HandleChange=(e)=>{
@@ -32,6 +32,7 @@ const Search=()=>{
     const HandleClick=()=>{
         dispatch(searchData(text)) 
     }
+
     return <div className={styles.searchDiv}>
         <input onChange={HandleChange} placeholder='Search for products...' style={{width:'300px', height:'30px', outline:'none'}}/>
         <span onClick={HandleClick} className={styles.icon_product} >
@@ -52,9 +53,9 @@ const Search=()=>{
           <Typography id="modal-modal-title" variant="h6" component="h2">
             <MobileFilter />
           </Typography>
-          {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography> */}
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <button onClick={()=>setOpen(false)}>Apply</button>
+          </Typography>
         </Box>
       </Modal>
     </div>
