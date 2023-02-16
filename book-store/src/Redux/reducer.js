@@ -1,8 +1,9 @@
-import {ADD_TO_CART, DECRISE_QUENTITY, FILTER_PRODUCT, INCREASE_QUENTITY, REMOVE_FROM_CART, SET_BOOK_DATA} from './constant'
+import {ADD_TO_CART, DECRISE_QUENTITY, FILTER_PRODUCT, INCREASE_QUENTITY, REMOVE_FROM_CART, SEARCH_DATA, SET_BOOK_DATA} from './constant'
 const initialState={
     currentBookData:[],
     cartData:[],
     filterData:[],
+    searchData:[],
 }
 export const BookData=(store=initialState,action)=>{
     switch(action.type){
@@ -18,6 +19,8 @@ export const BookData=(store=initialState,action)=>{
             return {...store,cartData:[...manageQuentity(store.cartData,action.data,"dec")]};
         case FILTER_PRODUCT:
             return {...store,filterData:[...filterData(store.currentBookData,action.data)]};
+        case SEARCH_DATA:
+            return {...store, searchData:[...searchHandler(store.currentBookData,action.text)]};
         default:
             return store;
     }
@@ -70,4 +73,13 @@ const filterData = (data, selectedValues) => {
     });
     return result;
   };
+
+  //search function
+  const searchHandler=(data,text)=>{
+    console.log("text",data)
+    let result=data.filter((e)=>{
+        return e.title.toLowerCase().includes(text.length && text.toLowerCase());
+    })
+    return result;
+}
   
