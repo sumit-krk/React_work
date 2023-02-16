@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import {useSelector} from 'react-redux'
-import { addToCart, emptyCart, removeToCart } from '../../Redux/action';
+import { addToCart } from '../../Redux/action';
 import { productList } from '../../Redux/productAction';
 import styles from './product.module.css'
 

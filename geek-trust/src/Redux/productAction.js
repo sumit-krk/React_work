@@ -6,7 +6,6 @@ export const productList = () => {
 }
 
 export const searchData = (text) => {
-    console.log("text",text)
     return {
         type: SEARCH_DATA,
         text
