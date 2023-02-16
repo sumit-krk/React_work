@@ -1,4 +1,4 @@
-import {GET_BOOK_DATA, ADD_TO_CART, REMOVE_FROM_CART, INCREASE_QUENTITY, DECRISE_QUENTITY, FILTER_PRODUCT} from './constant'
+import {GET_BOOK_DATA, ADD_TO_CART, REMOVE_FROM_CART, INCREASE_QUENTITY, DECRISE_QUENTITY, FILTER_PRODUCT, SEARCH_DATA} from './constant'
 
 export const gatAllBookData=()=>{
     return {
@@ -40,5 +40,12 @@ export const filterProduct=(data)=>{
     return{
         type:FILTER_PRODUCT,
         data
+    }
+}
+
+export const searchData=(text)=>{
+    return{
+        type:SEARCH_DATA,
+        text
     }
 }
