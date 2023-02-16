@@ -10,7 +10,6 @@ const ProductDetails=()=>{
    const [productDetails,setProductDetails]=useState([]);
    const {id,price}=useParams();
    const {cartData}=useSelector((state)=>state.BookData)
-   console.log(cartData);
    useEffect(()=>{
     getproductDetails();
    },[])
@@ -45,9 +44,9 @@ const ProductDetails=()=>{
    }
     return(
         <>
-            <div style={{display:'flex',padding:'10px'}}>
-                <div style={{width:'400px',height:'300px',border:'1px solid red'}}><img src={productDetails.image_url} style={{width:'100%',height:'100%'}}></img></div>
-                <div style={{padding:'0px 30px'}}>
+            <div style={{display:'flex',width:'100%',padding:'15px 0px'}}>
+                <div style={{width:'15%',height:'300px',border:'1px solid red',marginLeft:'20px'}}><img src={productDetails.image_url} style={{width:'100%',height:'100%'}}></img></div>
+                <div style={{width:'70%',height:'300px',marginLeft:'50px'}}>
                     <div style={{fontWeight:'bold',fontSize:'30px'}}>{productDetails.title}</div>
                     <div style={{fontWeight:'bold',color:'gray'}}>Author:- {productDetails.authors}</div>
                     <div style={{color:'#351C75',marginTop:'10px'}}>{productDetails.description}</div>
