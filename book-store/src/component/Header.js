@@ -34,10 +34,12 @@ const Header=()=>{
             <div style={{padding:'0px 5px 0px 0px'}}> My Account</div>
             <RxDividerVertical style={{color:'red',fontSize:'35px'}} />  
             <AiOutlineHeart style={{color:'red',fontSize:'35px'}} />
-            <Link to="/cart">
-                <BsMinecartLoaded style={{color:'red',fontSize:'35px',padding:'0px 0px 0px 20px'}} />
-            </Link>
-            <div style={{position:'absolute',right:"6.5%",bottom:'40%'}}>{cartData?.length}</div>      
+            <div style={{position:'relative',display:'flex',padding:'0px 0px 0px 20px'}}>
+              <Link to="/cart">
+                  <BsMinecartLoaded style={{color:'red',fontSize:'35px'}} />
+              </Link>
+              <div style={{position:'absolute',justifyContent:'center',alignItems:'center',top:'5px',left:'33px'}}>{cartData?.length}</div>  
+            </div>    
           </div>
         </div>
     )
