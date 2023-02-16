@@ -14,20 +14,14 @@ const CartPage=()=>{
           {data.map((e) => {
             return (
               <div key={e.id}
-                style={{
-                  display: "flex",
-                  borderBottom: "1px solid gray",
-                  width: "400px",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                }}
+                className={styles.cart_item}
               >
-                <img height={150} width={150} src={e.imageURL} />
+                <img width="25%" src={e.imageURL} />
                 <div>
                   <div>{e.name}</div>
                   <div>{e.price}</div>
                 </div>
-                <div style={{ display: "flex", width:'16%', justifyContent:'space-between' }}>
+                <div className={styles.all_button}>
                   <div>
                     <button
                       onClick={() =>
@@ -52,7 +46,7 @@ const CartPage=()=>{
                     )}
                   </div>
                 </div>
-                <div>
+                <div className={styles.remove_button}>
                   <button
                     onClick={() => dispatch(RemoveCartData(e.id, e.price))}
                   >
