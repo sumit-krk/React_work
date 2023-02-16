@@ -10,6 +10,7 @@ import ProductDetails from './component/ProductDetails';
 import Product from './component/Product';
 import Home from './component/Home';
 import Cart from './component/Cart';
+import ProductDone from './component/ProductDone';
 
 const appRouter=createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const appRouter=createBrowserRouter([
       {
         path:'/Cart',
         element: <Cart />
+      },
+      {
+        path:'/payment',
+        element: <ProductDone />
       }
     ]
   },
