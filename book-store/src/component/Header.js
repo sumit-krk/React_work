@@ -16,7 +16,9 @@ const Header=()=>{
       setText(e.target.value)
     }
     const HandleClick=()=>{
-      dispatch(searchData(text)) 
+      console.log("clicked")
+      dispatch(searchData(text))
+      setText(""); 
   }
       const {cartData}=useSelector((state)=>state.BookData)
       console.log(cartData)
