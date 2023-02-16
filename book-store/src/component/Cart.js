@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { decriseQuantity, increaseQuantity, removeFromCart } from "../Redux/action";
 const Cart=()=>{
     const dispatch=useDispatch();
@@ -65,7 +66,9 @@ const Cart=()=>{
                 <div style={{border:'1px solid red',marginLeft:'15%',alignItems:'center',height:'80px',padding:'10px',borderRadius:'10px'}}>
                     <div>Total Quantity Of Cart:- {totalItem}</div>
                     <div>Total Price:- {totalPrice}</div>
-                    <div style={{backgroundColor:'red',color:'white',padding:'5px',borderRadius:'5px',cursor:'pointer'}}>PAY AND COMPLETE YOUR ORDER</div>
+                    <Link to='/payment' style={{textDecoration:'none'}}>
+                        <div style={{backgroundColor:'red',color:'white',padding:'5px',borderRadius:'5px',cursor:'pointer'}}>PAY AND COMPLETE YOUR ORDER</div>
+                    </Link>
                 </div>
             </div>
         </div>
