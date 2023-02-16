@@ -12,25 +12,34 @@ const Product=()=>{
     const [data,setData]=useState([]);
     const [allData,setAllData]=useState([]);
     const [count,setCount]=useState(1);
+    console.log("data",data)
+    console.log("searchData",searchData)
+    console.log("allData",allData)
     useEffect(()=>{
           dispatch(gatAllBookData())
     },[])
 
     useEffect(()=>{
+      console.log("yesssss")
       setData([])
       if(searchData.length>0){
+        console.log("treeee")
         setAllData(searchData);
+        return;
       }
       else if(filterData.length>0){
         setAllData(filterData);
+        return;
       }
       else{
         setAllData(currentBookData);
+        return;
       }
   
     },[currentBookData,filterData,searchData])
 
     useEffect(()=>{
+      console.log("running...")
       setData([...data,...allData.slice((count-1)*10,(count*10)+10)])
     },[count,allData])
 
@@ -44,9 +53,9 @@ const Product=()=>{
         <Filter />
         <div style={{width:'85%',display: "flex", flexWrap: "wrap",justifyContent:'space-around'}}>
           <div style={{ display: "flex", flexWrap: "wrap",justifyContent:'space-around' }}>
-            {data?.map((e) => {
+            {data?.map((e,index) => {
               return (
-                <Link to={`/productdetails/${e.id}/${e.price}`} style={{textDecoration:'none',color:'black'}}>
+                <Link key={index} to={`/productdetails/${e.id}/${e.price}`} style={{textDecoration:'none',color:'black'}}>
                     <div
                   style={{
                     width: "200px",

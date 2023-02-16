@@ -76,7 +76,6 @@ const filterData = (data, selectedValues) => {
 
   //search function
   const searchHandler=(data,text)=>{
-    console.log("text",data)
     let result=data.filter((e)=>{
         return e.title.toLowerCase().includes(text.length && text.toLowerCase());
     })
