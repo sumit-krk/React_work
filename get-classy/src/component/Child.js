@@ -7,6 +7,7 @@ class Child extends React.Component {
                 count:this.props.num, /* created count variable in state */
                 string:'', /* created string variable in state */
                 mul:1,
+                juctCheckMount:0
             }
     }
 
@@ -14,11 +15,29 @@ class Child extends React.Component {
         console.log("After constructor function and render method, component did mount will be call");
         /* best place to call api here */
         /* it will be run only one time when ever component will be render first time (commit phase)*/
+        this.setState({
+            juctCheckMount:this.state.juctCheckMount+1, /*after this will update line number 24 will be run*/
+        })
+
+        // this.timer=setInterval(()=>{
+        //     console.log("yes I am running")
+        // },1000)
     }
 
-    componentDidUpdate(){
+    componentDidUpdate(prevProps, prevState){
+        if (this.state.count !== prevState.count) { /* here you can see update you state as per change state*/
+                 //
+               }
+               if (this.state.mul !== prevState.countm) {
+                 // code
+               }
         console.log("updating phase");
         /*it will not run first time when component will be render, but it will run when ever state gets update in our component during the commit phase*/
+    }
+
+    componentWillUnmount(){
+        /*component will Unmount will be call when our current component will be leve form UI*/
+        clearInterval(this.timer) /*when you will be lev from UI interval will be clear*/
     }
 
     render(){
