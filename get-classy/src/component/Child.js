@@ -31,7 +31,7 @@ class Child extends React.Component {
                if (this.state.mul !== prevState.countm) {
                  // code
                }
-        console.log("updating phase");
+        console.log("updating phase when state or props change");
         /*it will not run first time when component will be render, but it will run when ever state gets update in our component during the commit phase*/
     }
 
