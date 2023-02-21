@@ -23,7 +23,7 @@ class Child extends React.Component {
         //     console.log("yes I am running")
         // },1000)
     }
-
+    /* lern how to use use context in class component */
     componentDidUpdate(prevProps, prevState){
         if (this.state.count !== prevState.count) { /* here you can see update you state as per change state*/
                  //
