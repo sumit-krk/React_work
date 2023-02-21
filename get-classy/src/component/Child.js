@@ -5,7 +5,7 @@ class Child extends React.Component {
         super(props)
             this.state={    /* created state in class component */
                 count:this.props.num, /* created count variable in state */
-                string:'', /* created string variable in state */
+                string:'', /* created string variable in state  */
                 mul:1,
                 juctCheckMount:0
             }
