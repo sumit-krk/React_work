@@ -8,7 +8,6 @@ const initialState={
 export const BookData=(store=initialState,action)=>{
     switch(action.type){
         case SET_BOOK_DATA:
-            console.log("data_in_reducer",action.data);
             return {...store,currentBookData:[...SetPrice(action.data)]};
         case ADD_TO_CART:
             return {...store,cartData:[...store.cartData,action.data]};
@@ -57,22 +56,60 @@ const manageQuentity=(alldata,data,type)=>{
 
 // function for filter data
 const filterData = (data, selectedValues) => {
-    let result = data.filter((e) => {
-      if (selectedValues.includes(e.format)) {
-        return e;
-      } else if (selectedValues.includes("300")) {
-        return e.price >= 100 && e.price <= 300;
-      } else if (selectedValues.includes("600")) {
-        return e.price >= 301 && e.price <= 600;
-      } else if (selectedValues.includes("1000")) {
-        return e.price >= 601 && e.price<=1000;
-      } else if(selectedValues.includes("3")){
-        return e.rating >= 3;
-      }  else if(selectedValues.includes("4")){
-        return e.rating >= 4;
-      } 
-    });
-    return result;
+    console.log("selectedValues",selectedValues)
+    let filterValues=[];
+    if (selectedValues.includes("300")) {
+        let result=data.filter((e)=>{
+            return e.price >= 100 && e.price <= 300; 
+        }) 
+        filterValues=[...filterValues,...result];
+      }
+
+      if (selectedValues.includes("600")) {
+        let result=data.filter((e)=>{
+            return e.price >= 301 && e.price <= 600;
+        }) 
+        filterValues=[...filterValues,...result];
+      }
+
+      if (selectedValues.includes("1000")) {
+        let result=data.filter((e)=>{
+            return e.price >= 601 && e.price<=1000;
+        }) 
+        filterValues=[...filterValues,...result];
+      }
+
+      if (selectedValues.includes("Hardcover")) {
+        let result=data.filter((e)=>{
+            return e.format==="Hardcover";
+        }) 
+        filterValues=[...filterValues,...result];
+      }
+
+      if (selectedValues.includes("Paperback")) {
+        let result=data.filter((e)=>{
+            return e.format==="Paperback";
+        }) 
+        filterValues=[...filterValues,...result];
+      }
+
+      if (selectedValues.includes("3")) {
+        let result=data.filter((e)=>{
+            return e.rating>="3";
+        }) 
+        filterValues=[...filterValues,...result];
+      }
+
+      if (selectedValues.includes("4")) {
+        let result=data.filter((e)=>{
+            return e.rating>="4";
+        }) 
+        filterValues=[...filterValues,...result];
+      }
+
+      console.log("filterValues",filterValues)
+      return filterValues;
+
   };
 
   //search function
