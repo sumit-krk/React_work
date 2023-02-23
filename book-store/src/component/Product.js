@@ -21,6 +21,7 @@ const Product=()=>{
 
     useEffect(()=>{
       setData([])
+      setCount(2)
       if(searchData.length>0){
         console.log("treeee")
         setAllData(searchData);
@@ -38,7 +39,6 @@ const Product=()=>{
     },[filterData,searchData])
 
     useEffect(()=>{
-      console.log("running...")
       setData([...data,...allData.slice((count-2)*10,(count*10))])
     },[count,allData])
 
