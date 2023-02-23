@@ -18,9 +18,9 @@ export const BookData=(store=initialState,action)=>{
         case DECRISE_QUENTITY:
             return {...store,cartData:[...manageQuentity(store.cartData,action.data,"dec")]};
         case FILTER_PRODUCT:
-            return {...store,filterData:[...filterData(store.currentBookData,action.data)]};
+            return {...store,filterData:[...filterData(store.currentBookData,action.data)], searchData:[]};
         case SEARCH_DATA:
-            return {...store, searchData:[...searchHandler(store.currentBookData,action.text)]};
+            return {...store, searchData:[...searchHandler(store.currentBookData,action.text)],filterData:[]};
         default:
             return store;
     }
