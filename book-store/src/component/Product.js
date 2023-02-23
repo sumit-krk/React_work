@@ -11,7 +11,7 @@ const Product=()=>{
     const {currentBookData,filterData,searchData} = useSelector((state)=> state.BookData);
     const [data,setData]=useState([]);
     const [allData,setAllData]=useState([]);
-    const [count,setCount]=useState(1);
+    const [count,setCount]=useState(2);
     console.log("data",data)
     console.log("searchData",searchData)
     console.log("allData",allData)
@@ -20,7 +20,6 @@ const Product=()=>{
     },[])
 
     useEffect(()=>{
-      console.log("yesssss")
       setData([])
       if(searchData.length>0){
         console.log("treeee")
@@ -36,15 +35,15 @@ const Product=()=>{
         return;
       }
   
-    },[currentBookData,filterData,searchData])
+    },[filterData,searchData])
 
     useEffect(()=>{
       console.log("running...")
-      setData([...data,...allData.slice((count-1)*10,(count*10)+10)])
+      setData([...data,...allData.slice((count-2)*10,(count*10))])
     },[count,allData])
 
     const HandlePagination=()=>{
-      setCount(count+1);
+      setCount(count+2);
     }
     
     return (
@@ -80,7 +79,7 @@ const Product=()=>{
               );
             })}
           </div>
-          <div style={{backgroundColor:'black',color:'white',marginBottom:'5px',padding:'5px',borderRadius:'5px',cursor:'pointer'}} onClick={()=>HandlePagination(count)}>Load More..</div>
+          <div style={{backgroundColor:'black',color:'white',marginBottom:'5px',padding:'5px',borderRadius:'5px',cursor:'pointer'}} onClick={()=>HandlePagination(count)}>{data.length!==allData.length?`Load More...`:'No more'}</div>
         </div>
         </div>
       </>
