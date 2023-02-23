@@ -16,9 +16,13 @@ const Header=()=>{
       setText(e.target.value)
     }
     const HandleClick=()=>{
-      console.log("clicked")
-      dispatch(searchData(text))
-      setText(""); 
+      if(text.length===0){
+        alert("Enter valid data");
+      }
+      else{
+        dispatch(searchData(text))
+        setText(""); 
+      }
   }
       const {cartData}=useSelector((state)=>state.BookData)
       console.log(cartData)
@@ -28,7 +32,7 @@ const Header=()=>{
             <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png" style={{padding:'0px 0px 0px 40px'}} />
           </Link>
           <div style={{display:'flex'}}>
-            <input onChange={HandleChange} placeholder="Search by Title, Author, Publisher or ISBN" style={{width:'400px',height:'30px',border:'1px solid red'}}/>
+            <input onChange={HandleChange} placeholder="Search by Title, Author, Publisher or ISBN" style={{width:'400px',height:'30px',border:'1px solid red'}} value={text}/>
             <FaSearch onClick={HandleClick} style={{backgroundColor:'red',color:'white',padding:'9px',display:'flex',cursor:'pointer'}} />
           </div>
           <div style={{display:'flex',alignItems:'center',padding:'0px 80px 0px 0px'}}>
