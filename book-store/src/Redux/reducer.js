@@ -8,7 +8,8 @@ const initialState={
 export const BookData=(store=initialState,action)=>{
     switch(action.type){
         case SET_BOOK_DATA:
-            return {...store,currentBookData:[...store.currentBookData,...SetPrice(action.data)]};
+            console.log("data_in_reducer",action.data);
+            return {...store,currentBookData:[...SetPrice(action.data)]};
         case ADD_TO_CART:
             return {...store,cartData:[...store.cartData,action.data]};
         case REMOVE_FROM_CART:
